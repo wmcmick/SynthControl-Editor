@@ -27,3 +27,14 @@ E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIContr
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\SynthControlEditor.exe.config
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.exe
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.pdb
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\SynthControlEditor.exe
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\SynthControlEditor.pdb
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmDisplay.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmPageName.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmMain.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmPreset.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmPresetFolderName.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmTranslators.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.Properties.Resources.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControl Editor.csproj.GenerateResource.Cache

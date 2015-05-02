@@ -12,3 +12,17 @@ E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIContr
 E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmPresetFolderName.resources
 E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmPageName.resources
 E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmDisplay.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Release\SynthControlEditor.exe.config
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Release\SynthControlEditor.exe
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Release\SynthControlEditor.pdb
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\ResolveAssemblyReference.cache
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmDisplay.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmPageName.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmMain.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmPreset.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmPresetFolderName.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmTranslators.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.Properties.Resources.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControl Editor.csproj.GenerateResource.Cache
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.exe
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.pdb

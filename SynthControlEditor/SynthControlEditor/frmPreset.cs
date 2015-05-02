@@ -37,9 +37,13 @@ namespace SynthControlEditor
         private int parameterNumber;
 
         private frmDisplay displayForm;
+
+        private bool presetChanged;
         
         public frmPreset(Preset pPreset, string sRootPath) : base() 
         {
+            presetChanged = false;
+            
             preset = pPreset;
             rootPath = sRootPath;
             
@@ -322,6 +326,7 @@ namespace SynthControlEditor
                 UpdateRanges();
                 UpdateColors();
                 SysexChanged();
+                presetChanged = true;
             }
         }
 
@@ -342,6 +347,7 @@ namespace SynthControlEditor
                 UpdateRanges();
                 UpdateColors();
                 SysexChanged();
+                presetChanged = true;
             }
         }
 
@@ -407,6 +413,7 @@ namespace SynthControlEditor
                 UpdateLayers();
                 UpdateColors();
                 ParameterValuesChanged();
+                presetChanged = true;
             }
         }
 
@@ -428,6 +435,7 @@ namespace SynthControlEditor
             if (!readingParameter)
             {
                 SysexChanged();
+                presetChanged = true;
             }
         }
 
@@ -445,6 +453,7 @@ namespace SynthControlEditor
             lviPageEdited.page.parameters[parameterNumber].min = Convert.ToUInt16(numMin.Value);
             lviPageEdited.page.parameters[parameterNumber].max = Convert.ToUInt16(numMax.Value);
             lviPageEdited.page.parameters[parameterNumber].displayOffset = Convert.ToInt16(numDisplayOffset.Value);
+            lviPageEdited.page.parameters[parameterNumber].stepSize = Convert.ToUInt16(numStepSize.Value);
             lviPageEdited.page.parameters[parameterNumber].translator = (byte)cmbTranslators.SelectedIndex;
             lviPageEdited.page.parameters[parameterNumber].translatorOffset = Convert.ToByte(numTranslatorOffset.Value);
             lviPageEdited.page.parameters[parameterNumber].translatorUseLastItemForExceeding = chkUseHighestExceeding.Checked;
@@ -526,15 +535,22 @@ namespace SynthControlEditor
         private void txtParameter_TextChanged(object sender, EventArgs e)
         {
             if (!readingParameter)
+            {
                 ParameterValuesChanged();
+                presetChanged = true;
+            }
             if (displayForm != null && lviPageEdited != null)
                 displayForm.UpdateDisplay(preset, lviPageEdited.page, parameterNumber);
         }
 
         private void txtHeader_TextChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < 4; i++)
-                lviPageEdited.page.headers[i] = lHeaders[i].Text;
+            if (!readingParameter)
+            {
+                for (int i = 0; i < 4; i++)
+                    lviPageEdited.page.headers[i] = lHeaders[i].Text;
+                presetChanged = true;
+            }
             if(displayForm != null && lviPageEdited != null)
                 displayForm.UpdateDisplay(preset, lviPageEdited.page, parameterNumber);
         }
@@ -565,6 +581,7 @@ namespace SynthControlEditor
                     lstPages.Items.Add(lvi);
                     lstPages.Items[lstPages.Items.Count - 1].Selected = true;
                     EditPage();
+                    presetChanged = true;
                 }
                 else
                     MessageBox.Show("Page name cannot be empty!");
@@ -580,11 +597,13 @@ namespace SynthControlEditor
         {
             if (lstPages.SelectedItems.Count > 0)
             {
+                readingParameter = true;
                 lviPageEdited = (ListViewItemPage)lstPages.SelectedItems[0];
                 txtPageName.Text = lstPages.SelectedItems[0].Text;
                 pnlDisplay.Enabled = true;
                 grpMainSettings.Enabled = true;
                 grpTranslator.Enabled = true;
+                readingParameter = false;
             }
             else
                 MessageBox.Show("No page selected!", "SynthControl Editor");
@@ -606,6 +625,7 @@ namespace SynthControlEditor
                     lstPages.Items.RemoveAt(selectedIndex);
                     lstPages.Items.Insert(selectedIndex - 1, lvi);
                 }
+                presetChanged = true;
             }
             else
                 MessageBox.Show("No page selected!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -622,6 +642,7 @@ namespace SynthControlEditor
                     lstPages.Items.RemoveAt(selectedIndex);
                     lstPages.Items.Insert(selectedIndex + 1, lvi);
                 }
+                presetChanged = true;
             }
             else
                 MessageBox.Show("No page selected!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -634,6 +655,7 @@ namespace SynthControlEditor
                 if (MessageBox.Show("Are you sure you wish to remove the page named \"" + lstPages.SelectedItems[0].Text + "\"?", "SynthControl Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     lstPages.Items.RemoveAt(lstPages.SelectedIndices[0]);
+                    presetChanged = true;
                 }
             }
             else
@@ -642,7 +664,7 @@ namespace SynthControlEditor
 
         private void btnEditTranslator_Click(object sender, EventArgs e)
         {
-
+            presetChanged = true;
         }
 
         private void txtPageName_TextChanged(object sender, EventArgs e)
@@ -651,6 +673,7 @@ namespace SynthControlEditor
             {
                 lviPageEdited.page.name = txtPageName.Text;
                 lviPageEdited.Text = txtPageName.Text;
+                presetChanged = true;
             }
         }
 
@@ -672,24 +695,43 @@ namespace SynthControlEditor
                 displayForm.Hide();
                 displayForm.Dispose();
             }
+
+            bool save = false;
+            if (presetChanged)
+                if (MessageBox.Show("There are unsaved changes to the preset, save before closing?", "SynthControl Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    save = true;
+
+            if (save)
+                SavePages();
         }
 
         private void LoadPages()
         {
-            if (File.Exists(Path.Combine(Path.Combine(rootPath, preset.folderName), "pages.lst")))
+            string sFolder = Path.Combine(rootPath, preset.folderName);
+            
+            if (File.Exists(Path.Combine(sFolder, "pages.lst")))
             {
                 BinaryReader reader = new BinaryReader(File.Open( Path.Combine(Path.Combine(rootPath, preset.folderName), "pages.lst"), FileMode.Open));
+                int i = 1;
                 while (reader.PeekChar() > 0)
                 {
-                    string sTmp = Encoding.ASCII.GetString(reader.ReadBytes(17));
-                    ListViewItemPage lvi = new ListViewItemPage();
-                    lvi.Text = sTmp;
-                    lstPages.Items.Add(lvi);
+                    string sTmp = Encoding.ASCII.GetString(reader.ReadBytes(17)).Trim();
+
+                    if (File.Exists(Path.Combine(sFolder, i.ToString() + ".pag")))
+                    {
+                        ListViewItemPage lvi = new ListViewItemPage();
+                        lvi.Text = sTmp;
+                        lvi.page.Load(Path.Combine(sFolder, (i + 1).ToString() + ".pag"));
+                        lstPages.Items.Add(lvi);
+                    }
                     
                     // Read new line character
                     if (reader.PeekChar() > 0)
                         reader.ReadByte();
+
+                    i++;
                 }
+                reader.Close();
             }
         }
 
