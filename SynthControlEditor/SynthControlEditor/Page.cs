@@ -56,6 +56,10 @@ namespace SynthControlEditor
                 reader.ReadByte(); // Read and discard new line character
    
                 // READ SYSEX FIELDS
+                parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(17)), 1);
+                parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(3)),  2);
+                parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(3)),  3);
+                parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(3)),  4);
             }
 
             reader.Close();
