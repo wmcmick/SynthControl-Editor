@@ -1957,7 +1957,7 @@
             this.numNumber1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumber1.Location = new System.Drawing.Point(105, 197);
             this.numNumber1.Maximum = new decimal(new int[] {
-            127,
+            16383,
             0,
             0,
             0});
@@ -1972,7 +1972,7 @@
             this.numNumber2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumber2.Location = new System.Drawing.Point(105, 223);
             this.numNumber2.Maximum = new decimal(new int[] {
-            127,
+            16383,
             0,
             0,
             0});
@@ -1987,7 +1987,7 @@
             this.numNumber3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumber3.Location = new System.Drawing.Point(105, 249);
             this.numNumber3.Maximum = new decimal(new int[] {
-            127,
+            16383,
             0,
             0,
             0});
@@ -2002,7 +2002,7 @@
             this.numNumber4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumber4.Location = new System.Drawing.Point(105, 275);
             this.numNumber4.Maximum = new decimal(new int[] {
-            127,
+            16383,
             0,
             0,
             0});

@@ -490,14 +490,22 @@ namespace SynthControlEditor
             lviPageEdited.page.parameters[parameterNumber].sysex.checksum = (byte)cmbChecksum.SelectedIndex;
         }
 
+        private void ReadHeaders()
+        {
+            for (int i = 0; i < 4; i++)
+                lHeaders[i].Text = lviPageEdited.page.headers[i];
+            for (int i = 0; i < 16; i++)
+                lParameterHeaders[i].Text = lviPageEdited.page.parameters[i].nameShort;
+        }
+
         private void ReadParameter(int param)
         {
-            lParameterHeaders[parameterNumber].Text = lviPageEdited.page.parameters[parameterNumber].nameShort;
             txtFullName.Text = lviPageEdited.page.parameters[parameterNumber].nameLong;
             cmbType.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].type;
             numMin.Value = lviPageEdited.page.parameters[parameterNumber].min;
             numMax.Value = lviPageEdited.page.parameters[parameterNumber].max;
             numDisplayOffset.Value = lviPageEdited.page.parameters[parameterNumber].displayOffset;
+            numStepSize.Value = lviPageEdited.page.parameters[parameterNumber].stepSize;
             numLayers.Value = lviPageEdited.page.parameters[parameterNumber].layers;
             numNumber1.Value = lviPageEdited.page.parameters[parameterNumber].number_l1;
             numNumber2.Value = lviPageEdited.page.parameters[parameterNumber].number_l2;
@@ -600,6 +608,9 @@ namespace SynthControlEditor
                 readingParameter = true;
                 lviPageEdited = (ListViewItemPage)lstPages.SelectedItems[0];
                 txtPageName.Text = lstPages.SelectedItems[0].Text;
+                parameterNumber = 0;
+                ReadHeaders();
+                ReadParameter(parameterNumber);
                 pnlDisplay.Enabled = true;
                 grpMainSettings.Enabled = true;
                 grpTranslator.Enabled = true;
@@ -721,7 +732,7 @@ namespace SynthControlEditor
                     {
                         ListViewItemPage lvi = new ListViewItemPage();
                         lvi.Text = sTmp;
-                        lvi.page.Load(Path.Combine(sFolder, (i + 1).ToString() + ".pag"));
+                        lvi.page.Load(Path.Combine(sFolder, i.ToString() + ".pag"));
                         lstPages.Items.Add(lvi);
                     }
                     
@@ -762,6 +773,9 @@ namespace SynthControlEditor
                 lvi.page.Save(Path.Combine(Path.Combine(rootPath, preset.folderName),(i + 1).ToString() + ".pag"));
             }
             writer.Close();
+
+            // Reset presetChanged flag
+            presetChanged = false;
         }
     }
 }

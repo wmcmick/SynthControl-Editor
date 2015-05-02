@@ -19,6 +19,47 @@ namespace SynthControlEditor
 
         public bool Load(string fileName)
         {
+            BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open));
+            //string sTmp = "";
+            //byte[] bytes = null;
+
+            byte version = reader.ReadByte(); // The version of the page file (unused at the moment, version 1)
+            
+            reader.ReadByte(); // Read and discard new line character
+
+            for (int i = 0; i < 4; i++)
+            {
+                headers[i] = Encoding.ASCII.GetString(reader.ReadBytes(20)).Trim();
+            }
+
+            reader.ReadByte(); // Read and discard new line character
+
+            for (int i = 0; i < parameters.Count; i++)
+            {
+                parameters[i].nameShort = Encoding.ASCII.GetString(reader.ReadBytes(4)).Trim();
+                parameters[i].nameLong = Encoding.ASCII.GetString(reader.ReadBytes(20)).Trim();
+                parameters[i].type = reader.ReadByte();
+                parameters[i].min = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+                parameters[i].max = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+                parameters[i].stepSize = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+                parameters[i].displayOffset = BitConverter.ToInt16(reader.ReadBytes(2), 0);
+                parameters[i].layers = reader.ReadByte();
+                parameters[i].number_l1 = Parameter.Create14bitValue(reader.ReadByte(), reader.ReadByte());
+                parameters[i].number_l2 = Parameter.Create14bitValue(reader.ReadByte(), reader.ReadByte());
+                parameters[i].number_l3 = Parameter.Create14bitValue(reader.ReadByte(), reader.ReadByte());
+                parameters[i].number_l4 = Parameter.Create14bitValue(reader.ReadByte(), reader.ReadByte());
+                parameters[i].separateChannels = Convert.ToBoolean(reader.ReadByte());
+                parameters[i].translator = reader.ReadByte();
+                parameters[i].translatorOffset = reader.ReadByte();
+                parameters[i].translatorUseLastItemForExceeding = Convert.ToBoolean(reader.ReadByte());
+
+                reader.ReadByte(); // Read and discard new line character
+   
+                // READ SYSEX FIELDS
+            }
+
+            reader.Close();
+
             return true;
         }
 

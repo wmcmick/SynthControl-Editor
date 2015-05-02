@@ -55,6 +55,11 @@ namespace SynthControlEditor
             sysex = new Sysex();
         }
 
+        public static ushort Create14bitValue(byte lsb, byte msb)
+        {
+            return (ushort)((msb << 7) | lsb);
+        }
+
         public static byte MSB7bit(ushort val)
         {
             return (byte)(val / 128);
