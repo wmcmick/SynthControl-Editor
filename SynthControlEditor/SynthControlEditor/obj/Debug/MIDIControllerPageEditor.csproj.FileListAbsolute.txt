@@ -1,0 +1,18 @@
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\bin\Debug\MIDIControllerPageEditor.exe
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\bin\Debug\MIDIControllerPageEditor.pdb
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.Properties.Resources.resources
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.csproj.GenerateResource.Cache
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.exe
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.pdb
+C:\Users\Mick\AppData\Local\Temporary Projects\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.frmMain.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.exe
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.pdb
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\bin\Debug\MIDIControllerPageEditor.exe
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\bin\Debug\MIDIControllerPageEditor.pdb
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Debug\ResolveAssemblyReference.cache
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.Properties.Resources.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.csproj.GenerateResource.Cache
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.frmPreset.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Debug\MIDIControllerPageEditor.frmMain.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\bin\Debug\MIDIControllerPageEditor.exe.config

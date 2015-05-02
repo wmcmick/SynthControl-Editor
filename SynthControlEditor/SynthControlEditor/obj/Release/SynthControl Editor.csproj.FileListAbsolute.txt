@@ -1,0 +1,14 @@
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\ResolveAssemblyReference.cache
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControl Editor.csproj.GenerateResource.Cache
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.Properties.Resources.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmMain.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmPreset.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\bin\Release\SynthControlEditor.exe.config
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\bin\Release\SynthControlEditor.exe
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\bin\Release\SynthControlEditor.pdb
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.exe
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.pdb
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmTranslators.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmPresetFolderName.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmPageName.resources
+E:\Dropbox\Programming\Visual Studio Projects\MIDIControllerPageEditor\MIDIControllerPageEditor\obj\Release\SynthControlEditor.frmDisplay.resources
