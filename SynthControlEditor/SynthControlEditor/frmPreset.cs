@@ -676,7 +676,11 @@ namespace SynthControlEditor
 
         private void btnEditTranslator_Click(object sender, EventArgs e)
         {
-            presetChanged = true;
+            if (cmbTranslators.SelectedIndex > 3)
+            {
+                frmTranslators frm = new frmTranslators(Path.Combine(rootPath, preset.folderName), cmbTranslators.SelectedIndex-3);
+                frm.ShowDialog();
+            }
         }
 
         private void txtPageName_TextChanged(object sender, EventArgs e)

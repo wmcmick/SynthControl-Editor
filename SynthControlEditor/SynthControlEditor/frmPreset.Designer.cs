@@ -1799,6 +1799,9 @@
             this.cmbTranslators.FormattingEnabled = true;
             this.cmbTranslators.Items.AddRange(new object[] {
             "None",
+            "ASCII",
+            "Notes",
+            "Notes (quarters)",
             "Translator 1 (100)",
             "Translator 2  (80)",
             "Translator 3  (50)",
@@ -1816,9 +1819,7 @@
             "Translator 15 (10)",
             "Translator 16 (10)",
             "Translator 17 (10)",
-            "Translator 18 (10)",
-            "ASCII",
-            "Notes"});
+            "Translator 18 (10)"});
             this.cmbTranslators.Location = new System.Drawing.Point(6, 26);
             this.cmbTranslators.Name = "cmbTranslators";
             this.cmbTranslators.Size = new System.Drawing.Size(155, 22);

@@ -26,3 +26,4 @@ E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControl Editor.csproj.GenerateResource.Cache
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.exe
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.pdb
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmTranslatorDescription.resources

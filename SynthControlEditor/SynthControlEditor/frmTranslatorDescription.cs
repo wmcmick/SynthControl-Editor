@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace SynthControlEditor
 {
-    public partial class frmPageName : Form
+    public partial class frmTranslatorDescription : Form
     {
         public string name;
         public string nameOld;
 
-        public frmPageName(string sName)
+        public frmTranslatorDescription(string sName)
         {
             InitializeComponent();
 
