@@ -24,15 +24,15 @@ namespace SynthControlEditor
             //byte[] bytes = null;
 
             byte version = reader.ReadByte(); // The version of the page file (unused at the moment, version 1)
-            
-            reader.ReadByte(); // Read and discard new line character
+
+            ReadUntilNewLine(reader); // Read and discard new line character
 
             for (int i = 0; i < 4; i++)
             {
                 headers[i] = Encoding.ASCII.GetString(reader.ReadBytes(20)).Trim();
             }
 
-            reader.ReadByte(); // Read and discard new line character
+            ReadUntilNewLine(reader); // Read and discard new line character
 
             for (int i = 0; i < parameters.Count; i++)
             {
@@ -53,18 +53,38 @@ namespace SynthControlEditor
                 parameters[i].translatorOffset = reader.ReadByte();
                 parameters[i].translatorUseLastItemForExceeding = Convert.ToBoolean(reader.ReadByte());
 
-                reader.ReadByte(); // Read and discard new line character
+                ReadUntilNewLine(reader); // Read and discard new line character
    
                 // READ SYSEX FIELDS
                 parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(17)), 1);
                 parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(3)),  2);
                 parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(3)),  3);
                 parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(3)),  4);
+
+                ReadUntilNewLine(reader); // Read and discard new line character
+
+                parameters[i].sysex.length = reader.ReadByte();
+                parameters[i].sysex.parameterPosition = reader.ReadByte();
+                parameters[i].sysex.parameterBytes = reader.ReadByte();
+                parameters[i].sysex.valueLsbPosition = reader.ReadByte();
+                parameters[i].sysex.valueMsbPosition = reader.ReadByte();
+                parameters[i].sysex.channelPosition = reader.ReadByte();
+                parameters[i].sysex.channelType = reader.ReadByte();
+                parameters[i].sysex.checksum = reader.ReadByte();
+
+                ReadUntilNewLine(reader); // Read and discard new line character
             }
 
             reader.Close();
 
             return true;
+        }
+
+        private void ReadUntilNewLine(BinaryReader r)
+        {
+            char c = ' ';
+            while (c != '\n')
+                c = r.ReadChar();
         }
 
         public bool Save(string fileName)

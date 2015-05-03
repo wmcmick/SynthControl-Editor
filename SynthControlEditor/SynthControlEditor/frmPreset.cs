@@ -514,6 +514,7 @@ namespace SynthControlEditor
             chkLayersChannels.Checked = lviPageEdited.page.parameters[parameterNumber].separateChannels;
             cmbTranslators.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].translator;
             numTranslatorOffset.Value = lviPageEdited.page.parameters[parameterNumber].translatorOffset;
+            chkUseHighestExceeding.Checked = lviPageEdited.page.parameters[parameterNumber].translatorUseLastItemForExceeding;
             // Sysex
             numLength.Value = lviPageEdited.page.parameters[parameterNumber].sysex.length;
             UpdateRanges();
