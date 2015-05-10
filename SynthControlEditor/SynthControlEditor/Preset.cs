@@ -13,10 +13,12 @@ namespace SynthControlEditor
         public string name;
         public string folderName;
         public List<Page> pages;
+        public List<Translator> translators;
         
         public Preset()
         {
             pages = new List<Page>();
+            translators = new List<Translator>();
         }
 
         public bool Save()

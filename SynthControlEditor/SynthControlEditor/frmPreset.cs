@@ -12,6 +12,8 @@ namespace SynthControlEditor
 {
     public partial class frmPreset : Form
     {
+        public const int TRANSLATOR_OFFSET = 3;
+        
         private Preset preset;
         string rootPath;
 
@@ -56,6 +58,7 @@ namespace SynthControlEditor
             lblPresetName.Text = preset.name;
 
             LoadPages();
+            LoadTranslators();
 
             //ListViewItemPage lvi = new ListViewItemPage();
             //lvi.Text = "Testpage";
@@ -676,10 +679,15 @@ namespace SynthControlEditor
 
         private void btnEditTranslator_Click(object sender, EventArgs e)
         {
-            if (cmbTranslators.SelectedIndex > 3)
+            if (cmbTranslators.SelectedIndex > TRANSLATOR_OFFSET)
             {
-                frmTranslators frm = new frmTranslators(Path.Combine(rootPath, preset.folderName), cmbTranslators.SelectedIndex-3);
+                frmTranslators frm = new frmTranslators(Path.Combine(rootPath, preset.folderName), cmbTranslators.SelectedIndex - TRANSLATOR_OFFSET, cmbTranslators.SelectedItem.ToString());
                 frm.ShowDialog();
+                if (frm.changesMade)
+                {
+                    cmbTranslators.Items[cmbTranslators.SelectedIndex] = frm.translator.name;
+                    presetChanged = true;
+                }
             }
         }
 
@@ -733,11 +741,11 @@ namespace SynthControlEditor
                 {
                     string sTmp = Encoding.ASCII.GetString(reader.ReadBytes(17)).Trim();
 
-                    if (File.Exists(Path.Combine(sFolder, i.ToString() + ".pag")))
+                    if (File.Exists(Path.Combine(sFolder, "p" + i.ToString() + ".pag")))
                     {
                         ListViewItemPage lvi = new ListViewItemPage();
                         lvi.Text = sTmp;
-                        lvi.page.Load(Path.Combine(sFolder, i.ToString() + ".pag"));
+                        lvi.page.Load(Path.Combine(sFolder, "p" + i.ToString() + ".pag"));
                         lstPages.Items.Add(lvi);
                     }
                     
@@ -751,8 +759,35 @@ namespace SynthControlEditor
             }
         }
 
+        public void LoadTranslators()
+        {
+            string sFolder = Path.Combine(rootPath, preset.folderName);
+
+            if (File.Exists(Path.Combine(sFolder, "trans.lst")))
+            {
+                BinaryReader reader = new BinaryReader(File.Open(Path.Combine(Path.Combine(rootPath, preset.folderName), "trans.lst"), FileMode.Open));
+                int i = 1;
+                while (reader.PeekChar() > 0)
+                {
+                    byte index = reader.ReadByte();
+                    string sFilename = "t" + index.ToString() + ".trl";
+                    if (File.Exists(Path.Combine(sFolder, sFilename)))
+                    {
+                        BinaryReader reader2 = new BinaryReader(File.Open(Path.Combine(Path.Combine(rootPath, preset.folderName), sFilename), FileMode.Open));
+                        string sTranslatorName = Translator.ReadLine(reader2);
+                        reader2.Close();
+                        cmbTranslators.Items[TRANSLATOR_OFFSET + index] = sTranslatorName;
+                    }
+                }
+                reader.Close();
+            }
+        }
+
         private void SavePages()
         {
+            // Variables
+            string sTmp = "";
+            
             // Delete all pages
             DirectoryInfo dir = new DirectoryInfo(Path.Combine(rootPath, preset.folderName));
             FileInfo[] files = dir.GetFiles("*.pag").Where(p => p.Extension == ".pag").ToArray();
@@ -769,13 +804,24 @@ namespace SynthControlEditor
             for(int i=0;i<lstPages.Items.Count;i++)
             {
                 ListViewItemPage lvi = (ListViewItemPage)lstPages.Items[i];
-                string sTmp = lvi.Text.PadRight(17);
+                sTmp = lvi.Text.PadRight(17);
                 writer.Write(Encoding.ASCII.GetBytes(sTmp));
                 if(i<lstPages.Items.Count-1)
                     writer.Write(Encoding.ASCII.GetBytes("\n"));
 
                 string pageFile = (i+1).ToString();
-                lvi.page.Save(Path.Combine(Path.Combine(rootPath, preset.folderName),(i + 1).ToString() + ".pag"));
+                lvi.page.Save(Path.Combine(Path.Combine(rootPath, preset.folderName), "p" + (i + 1).ToString() + ".pag"));
+            }
+            writer.Close();
+
+            // Save trans.lst
+            writer = new BinaryWriter(File.Open(Path.Combine(Path.Combine(rootPath, preset.folderName), "trans.lst"), FileMode.Create));
+            files = dir.GetFiles("*.trl").Where(p => p.Extension == ".trl").ToArray();
+            for(int i=0;i<files.Length;i++)
+            {
+                //MessageBox.Show(files[i].Name.Remove(files[i].Name.IndexOf('.')).Substring(1));
+                byte translatorNumber = Convert.ToByte(files[i].Name.Remove(files[i].Name.IndexOf('.')).Substring(1));
+                writer.Write(translatorNumber);
             }
             writer.Close();
 

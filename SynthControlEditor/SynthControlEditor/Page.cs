@@ -80,7 +80,7 @@ namespace SynthControlEditor
             return true;
         }
 
-        private void ReadUntilNewLine(BinaryReader r)
+        public static void ReadUntilNewLine(BinaryReader r)
         {
             char c = ' ';
             while (c != '\n')

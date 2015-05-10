@@ -39,6 +39,8 @@
             this.btnMoveUp = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lstTranslator
@@ -48,10 +50,10 @@
             this.clmnDescription});
             this.lstTranslator.FullRowSelect = true;
             this.lstTranslator.HideSelection = false;
-            this.lstTranslator.Location = new System.Drawing.Point(12, 12);
+            this.lstTranslator.Location = new System.Drawing.Point(12, 41);
             this.lstTranslator.MultiSelect = false;
             this.lstTranslator.Name = "lstTranslator";
-            this.lstTranslator.Size = new System.Drawing.Size(222, 545);
+            this.lstTranslator.Size = new System.Drawing.Size(222, 516);
             this.lstTranslator.TabIndex = 0;
             this.lstTranslator.UseCompatibleStateImageBehavior = false;
             this.lstTranslator.View = System.Windows.Forms.View.Details;
@@ -69,7 +71,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(240, 12);
+            this.btnAdd.Location = new System.Drawing.Point(240, 41);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 1;
@@ -99,7 +101,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(240, 41);
+            this.btnEdit.Location = new System.Drawing.Point(240, 70);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 1;
@@ -109,7 +111,7 @@
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(240, 94);
+            this.btnMoveUp.Location = new System.Drawing.Point(240, 123);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(75, 23);
             this.btnMoveUp.TabIndex = 2;
@@ -119,7 +121,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(240, 123);
+            this.button1.Location = new System.Drawing.Point(240, 152);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -129,7 +131,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(240, 176);
+            this.btnRemove.Location = new System.Drawing.Point(240, 205);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 4;
@@ -137,12 +139,32 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Name";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(53, 12);
+            this.txtName.MaxLength = 25;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(181, 20);
+            this.txtName.TabIndex = 6;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            // 
             // frmTranslators
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 569);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMoveUp);
@@ -156,9 +178,10 @@
             this.MaximizeBox = false;
             this.Name = "frmTranslators";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SynthControl Editor - Translators";
+            this.Text = "SynthControl Editor - Translator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTranslators_FormClosing);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -174,5 +197,7 @@
         private System.Windows.Forms.Button btnMoveUp;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtName;
     }
 }

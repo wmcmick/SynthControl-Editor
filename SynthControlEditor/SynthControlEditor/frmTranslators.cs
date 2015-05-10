@@ -6,35 +6,74 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SynthControlEditor
 {
     public partial class frmTranslators : Form
     {
-        private bool translatorChanged = false;
+        public bool changesMade;
+        public Translator translator;
 
-        public frmTranslators(string sFolder, int iTranslatorNumber)
+        private bool translatorChanged;
+        private string folder;
+
+        public frmTranslators(string sFolder, int iTranslatorNumber, string sTranslatorName)
         {
+            folder = sFolder;
+            
+
             InitializeComponent();
+
+            translator = new Translator(Translator.GetMaxLength(iTranslatorNumber), iTranslatorNumber, sTranslatorName);
+            string sFilename = "t" + iTranslatorNumber.ToString() + ".trl";
+            if (File.Exists(Path.Combine(sFolder, sFilename)))
+            {
+                translator.Load(Path.Combine(sFolder, sFilename));
+                LoadDescriptions();
+            }
+
+
+            txtName.Text = sTranslatorName;
+            translatorChanged = false;
+            changesMade = false;
+        }
+
+        private void LoadDescriptions()
+        {
+            for (int i = 0; i < translator.descriptions.Count; i++)
+            {
+                ListViewItem lvi = new ListViewItem();
+                ListViewItem.ListViewSubItem lviSub = new ListViewItem.ListViewSubItem();
+                lviSub.Text = translator.descriptions[i];
+                lvi.Text = i.ToString();
+                lvi.SubItems.Add(lviSub);
+                lstTranslator.Items.Add(lvi);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmTranslatorDescription frm = new frmTranslatorDescription("");
-            if (frm.ShowDialog() == DialogResult.OK)
+            if (lstTranslator.Items.Count < translator.maxLength)
             {
-                ListViewItem lvi = new ListViewItem();
-                ListViewItem.ListViewSubItem lviSub = new ListViewItem.ListViewSubItem();
-                lviSub.Text = frm.name;
+                frmTranslatorDescription frm = new frmTranslatorDescription("");
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    ListViewItem.ListViewSubItem lviSub = new ListViewItem.ListViewSubItem();
+                    lviSub.Text = frm.name;
 
-                lvi.Text = lstTranslator.Items.Count.ToString();
+                    lvi.Text = lstTranslator.Items.Count.ToString();
 
-                lvi.SubItems.Add(lviSub);
-                //lvi.page.name = frm.name;
-                lstTranslator.Items.Add(lvi);
-                translatorChanged = true;
-                //UpdateValues();
+                    lvi.SubItems.Add(lviSub);
+                    //lvi.page.name = frm.name;
+                    lstTranslator.Items.Add(lvi);
+                    translatorChanged = true;
+                    //UpdateValues();
+                }
             }
+            else
+                MessageBox.Show("Maximum lines of translator reached!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -128,7 +167,12 @@ namespace SynthControlEditor
 
         private void SaveTranslator()
         {
-            // Save
+            translator.name = txtName.Text;
+            translator.descriptions.Clear();
+            for (int i = 0; i < lstTranslator.Items.Count; i++)
+                translator.descriptions.Add(lstTranslator.Items[i].SubItems[1].Text);
+            translator.Save(folder);
+            changesMade = true;
         }
 
         private void frmTranslators_FormClosing(object sender, FormClosingEventArgs e)
@@ -140,6 +184,11 @@ namespace SynthControlEditor
 
             if (save)
                 SaveTranslator();
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            translatorChanged = true;
         }
     }
 }

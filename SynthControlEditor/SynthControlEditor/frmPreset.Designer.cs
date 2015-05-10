@@ -1802,27 +1802,24 @@
             "ASCII",
             "Notes",
             "Notes (quarters)",
-            "Translator 1 (100)",
-            "Translator 2  (80)",
-            "Translator 3  (50)",
-            "Translator 4  (50)",
-            "Translator 5  (20)",
-            "Translator 6  (20)",
-            "Translator 7  (20)",
-            "Translator 8  (20)",
-            "Translator 9  (20)",
-            "Translator 10 (15)",
-            "Translator 11 (15)",
-            "Translator 12 (15)",
-            "Translator 13 (15)",
-            "Translator 14 (15)",
-            "Translator 15 (10)",
-            "Translator 16 (10)",
-            "Translator 17 (10)",
-            "Translator 18 (10)"});
+            "*Translator 1",
+            "*Translator 2",
+            "*Translator 3",
+            "*Translator 4",
+            "*Translator 5",
+            "*Translator 6",
+            "*Translator 7",
+            "*Translator 8",
+            "*Translator 9",
+            "*Translator 10",
+            "*Translator 11",
+            "*Translator 12",
+            "*Translator 13",
+            "*Translator 14",
+            "*Translator 15"});
             this.cmbTranslators.Location = new System.Drawing.Point(6, 26);
             this.cmbTranslators.Name = "cmbTranslators";
-            this.cmbTranslators.Size = new System.Drawing.Size(155, 22);
+            this.cmbTranslators.Size = new System.Drawing.Size(201, 22);
             this.cmbTranslators.TabIndex = 130;
             this.cmbTranslators.SelectedIndexChanged += new System.EventHandler(this.txtParameter_TextChanged);
             // 
@@ -1874,7 +1871,7 @@
             // 
             // btnEditTranslator
             // 
-            this.btnEditTranslator.Location = new System.Drawing.Point(167, 26);
+            this.btnEditTranslator.Location = new System.Drawing.Point(213, 24);
             this.btnEditTranslator.Name = "btnEditTranslator";
             this.btnEditTranslator.Size = new System.Drawing.Size(74, 23);
             this.btnEditTranslator.TabIndex = 141;
