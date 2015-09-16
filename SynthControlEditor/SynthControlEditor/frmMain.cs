@@ -71,7 +71,7 @@ namespace SynthControlEditor
                     for (int i = 0; i < lines.Length - 1; i += 2) // There is one extra line break at the end
                     {
                         ListViewItemPreset item = new ListViewItemPreset(new string[] { lines[i+1].Trim(), lines[i].Trim() });
-                        item.preset.folderName = lines[i].Trim();
+                        item.preset.folderName = lines[i].Trim().Replace("\0",""); // Trim and remove null character that was saved for device
                         item.preset.name = lines[i + 1].Trim();
                         lstPresets.Items.Add(item);
                     }
@@ -155,7 +155,10 @@ namespace SynthControlEditor
             BinaryWriter writer = new BinaryWriter(File.Open(Path.Combine(txtFolder.Text, "presets.lst"), FileMode.Create));
             for (int i = 0; i < lstPresets.Items.Count; i++)
             {
-                string sTmp = lstPresets.Items[i].SubItems[1].Text.PadRight(8);
+                string sTmp = lstPresets.Items[i].SubItems[1].Text;
+                if(sTmp.Length < 8)
+                    sTmp += '\0'; // Add a null character to folder name if length of folder name is shorter than 8
+                sTmp.PadRight(8);
                 writer.Write(Encoding.ASCII.GetBytes(sTmp));
                 writer.Write(Encoding.ASCII.GetBytes("\n"));
                 sTmp = lstPresets.Items[i].Text.PadRight(16);

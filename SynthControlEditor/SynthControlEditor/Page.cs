@@ -29,15 +29,15 @@ namespace SynthControlEditor
 
             for (int i = 0; i < 4; i++)
             {
-                headers[i] = Encoding.ASCII.GetString(reader.ReadBytes(20)).Trim();
+                headers[i] = Encoding.ASCII.GetString(reader.ReadBytes(20)).TrimEnd();
             }
 
             ReadUntilNewLine(reader); // Read and discard new line character
 
             for (int i = 0; i < parameters.Count; i++)
             {
-                parameters[i].nameShort = Encoding.ASCII.GetString(reader.ReadBytes(4)).Trim();
-                parameters[i].nameLong = Encoding.ASCII.GetString(reader.ReadBytes(20)).Trim();
+                parameters[i].nameShort = Encoding.ASCII.GetString(reader.ReadBytes(4)).TrimEnd();
+                parameters[i].nameLong = Encoding.ASCII.GetString(reader.ReadBytes(20)).TrimEnd();
                 parameters[i].type = reader.ReadByte();
                 parameters[i].min = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
                 parameters[i].max = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
