@@ -158,10 +158,14 @@ namespace SynthControlEditor
                 string sTmp = lstPresets.Items[i].SubItems[1].Text;
                 if(sTmp.Length < 8)
                     sTmp += '\0'; // Add a null character to folder name if length of folder name is shorter than 8
-                sTmp.PadRight(8);
-                writer.Write(Encoding.ASCII.GetBytes(sTmp));
+                //sTmp.PadRight(8);
+                byte[] bytes = Encoding.ASCII.GetBytes(sTmp);
+                //if(bytes.Length < 8)
+                byte[] padding = new byte[8-bytes.Length];
+                writer.Write(bytes);
+                writer.Write(padding);
                 writer.Write(Encoding.ASCII.GetBytes("\n"));
-                sTmp = lstPresets.Items[i].Text.PadRight(16);
+                sTmp = lstPresets.Items[i].Text.PadRight(17);
                 writer.Write(Encoding.ASCII.GetBytes(sTmp));
                 if (i < lstPresets.Items.Count - 1)
                     writer.Write(Encoding.ASCII.GetBytes("\n"));

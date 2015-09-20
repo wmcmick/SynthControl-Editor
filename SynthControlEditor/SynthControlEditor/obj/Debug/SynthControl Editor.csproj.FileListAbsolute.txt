@@ -39,3 +39,4 @@ E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\Sy
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.Properties.Resources.resources
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControl Editor.csproj.GenerateResource.Cache
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmTranslatorDescription.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmSettings.resources

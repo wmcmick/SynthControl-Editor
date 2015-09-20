@@ -49,6 +49,7 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.btnQuit = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSettings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstPresets
@@ -118,7 +119,7 @@
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(335, 153);
+            this.btnMoveUp.Location = new System.Drawing.Point(335, 235);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(85, 23);
             this.btnMoveUp.TabIndex = 4;
@@ -129,7 +130,7 @@
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(335, 182);
+            this.btnMoveDown.Location = new System.Drawing.Point(335, 264);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(85, 23);
             this.btnMoveDown.TabIndex = 5;
@@ -140,7 +141,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(335, 330);
+            this.btnRemove.Location = new System.Drawing.Point(335, 412);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(85, 23);
             this.btnRemove.TabIndex = 6;
@@ -151,7 +152,7 @@
             // 
             // btnAddExisting
             // 
-            this.btnAddExisting.Location = new System.Drawing.Point(335, 235);
+            this.btnAddExisting.Location = new System.Drawing.Point(335, 317);
             this.btnAddExisting.Name = "btnAddExisting";
             this.btnAddExisting.Size = new System.Drawing.Size(85, 23);
             this.btnAddExisting.TabIndex = 7;
@@ -162,7 +163,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(335, 264);
+            this.btnExport.Location = new System.Drawing.Point(335, 346);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(85, 23);
             this.btnExport.TabIndex = 8;
@@ -211,12 +212,23 @@
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(335, 127);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(85, 23);
+            this.btnSettings.TabIndex = 12;
+            this.btnSettings.Text = "&Settings";
+            this.toolTip.SetToolTip(this.btnSettings, "Rename the selected preset");
+            this.btnSettings.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(430, 549);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnRename);
             this.Controls.Add(this.btnEditPreset);
@@ -262,5 +274,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Button btnSettings;
     }
 }

@@ -27,3 +27,4 @@ E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.exe
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.pdb
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmTranslatorDescription.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Release\SynthControlEditor.frmSettings.resources

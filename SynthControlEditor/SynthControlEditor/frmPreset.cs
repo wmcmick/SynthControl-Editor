@@ -13,6 +13,15 @@ namespace SynthControlEditor
     public partial class frmPreset : Form
     {
         public const int TRANSLATOR_OFFSET = 3;
+
+        public const int TYPE_NONE = 0;
+        public const int TYPE_CC7BIT = 1;
+        public const int TYPE_CC14BIT = 2;
+        public const int TYPE_RPN7BIT = 3;
+        public const int TYPE_RPN14BIT = 4;
+        public const int TYPE_NRPN7BIT = 5;
+        public const int TYPE_NRPN14BIT = 6;
+        public const int TYPE_SYSEX = 7;
         
         private Preset preset;
         string rootPath;
@@ -505,6 +514,28 @@ namespace SynthControlEditor
         {
             txtFullName.Text = lviPageEdited.page.parameters[parameterNumber].nameLong;
             cmbType.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].type;
+
+            if (cmbType.SelectedIndex == TYPE_CC14BIT || cmbType.SelectedIndex == TYPE_NRPN14BIT || cmbType.SelectedIndex == TYPE_RPN14BIT || cmbType.SelectedIndex == TYPE_SYSEX)
+            {
+                numMin.Maximum =
+                    numMax.Maximum =
+                    numStepSize.Maximum = 
+                    numNumber1.Maximum = 
+                    numNumber2.Maximum = 
+                    numNumber3.Maximum = 
+                    numNumber4.Maximum = 16383;
+            }
+            else
+            {
+                numMin.Maximum =
+                    numMax.Maximum =
+                    numStepSize.Maximum =
+                    numNumber1.Maximum =
+                    numNumber2.Maximum =
+                    numNumber3.Maximum =
+                    numNumber4.Maximum = 16383;
+            }
+
             numMin.Value = lviPageEdited.page.parameters[parameterNumber].min;
             numMax.Value = lviPageEdited.page.parameters[parameterNumber].max;
             numDisplayOffset.Value = lviPageEdited.page.parameters[parameterNumber].displayOffset;
@@ -615,6 +646,7 @@ namespace SynthControlEditor
                 parameterNumber = 0;
                 ReadHeaders();
                 ReadParameter(parameterNumber);
+                HighlightParameterButton(parameterNumber);
                 pnlDisplay.Enabled = true;
                 grpMainSettings.Enabled = true;
                 grpTranslator.Enabled = true;
@@ -622,6 +654,13 @@ namespace SynthControlEditor
             }
             else
                 MessageBox.Show("No page selected!", "SynthControl Editor");
+        }
+
+        private void HighlightParameterButton(int parameterButton)
+        {
+            foreach (Label label in lParameterLabels)
+                label.BackColor = Color.Black;
+            lParameterLabels[parameterButton].BackColor = Color.DarkRed;
         }
 
         private void btnEditPage_Click(object sender, EventArgs e)
@@ -766,7 +805,7 @@ namespace SynthControlEditor
             if (File.Exists(Path.Combine(sFolder, "trans.lst")))
             {
                 BinaryReader reader = new BinaryReader(File.Open(Path.Combine(Path.Combine(rootPath, preset.folderName), "trans.lst"), FileMode.Open));
-                int i = 1;
+                //int i = 1;
                 while (reader.PeekChar() > 0)
                 {
                     byte index = reader.ReadByte();
