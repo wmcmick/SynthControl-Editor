@@ -43,7 +43,7 @@
             this.txtSysex1 = new System.Windows.Forms.TextBox();
             this.chkLayersChannels = new System.Windows.Forms.CheckBox();
             this.lstPages = new System.Windows.Forms.ListView();
-            this.clmnPageName = new System.Windows.Forms.ColumnHeader();
+            this.clmnPageName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnNewPage = new System.Windows.Forms.Button();
             this.btnRemovePage = new System.Windows.Forms.Button();
             this.btnMovePageDown = new System.Windows.Forms.Button();
@@ -326,7 +326,7 @@
             this.chkLayersChannels.TabIndex = 135;
             this.chkLayersChannels.Text = "Separate MIDI Channels";
             this.tooltip.SetToolTip(this.chkLayersChannels, "If checked, the layers will send midi data to successive midi channels. So if cha" +
-                    "nnel is 1, then layer 2 will be sent to midi channel 1+1 etc.");
+        "nnel is 1, then layer 2 will be sent to midi channel 1+1 etc.");
             this.chkLayersChannels.UseVisualStyleBackColor = true;
             this.chkLayersChannels.CheckedChanged += new System.EventHandler(this.txtParameter_TextChanged);
             // 
@@ -1339,10 +1339,10 @@
             this.lblParameter16.TabIndex = 165;
             this.lblParameter16.Text = "16";
             this.lblParameter16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter16.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter16.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter16.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // lblParameter15
             // 
@@ -1355,10 +1355,10 @@
             this.lblParameter15.TabIndex = 164;
             this.lblParameter15.Text = "15";
             this.lblParameter15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter15.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter15.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter15.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter15.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter15.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // lblParameter14
             // 
@@ -1371,10 +1371,10 @@
             this.lblParameter14.TabIndex = 163;
             this.lblParameter14.Text = "14";
             this.lblParameter14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter14.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter14.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter14.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter14.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter14.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // lblParameter13
             // 
@@ -1387,10 +1387,10 @@
             this.lblParameter13.TabIndex = 162;
             this.lblParameter13.Text = "13";
             this.lblParameter13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter13.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter13.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter13.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter13.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter13.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // lblParameter12
             // 
@@ -1403,10 +1403,10 @@
             this.lblParameter12.TabIndex = 161;
             this.lblParameter12.Text = "12";
             this.lblParameter12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter12.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter12.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter12.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter12.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter12.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader1
             // 
@@ -1420,6 +1420,7 @@
             this.txtHeader1.Size = new System.Drawing.Size(35, 20);
             this.txtHeader1.TabIndex = 134;
             this.txtHeader1.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader1.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter11
             // 
@@ -1432,10 +1433,10 @@
             this.lblParameter11.TabIndex = 160;
             this.lblParameter11.Text = "11";
             this.lblParameter11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter11.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter11.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter11.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader2
             // 
@@ -1449,6 +1450,7 @@
             this.txtHeader2.Size = new System.Drawing.Size(35, 20);
             this.txtHeader2.TabIndex = 135;
             this.txtHeader2.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader2.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter10
             // 
@@ -1461,10 +1463,10 @@
             this.lblParameter10.TabIndex = 159;
             this.lblParameter10.Text = "10";
             this.lblParameter10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter10.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter10.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter10.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader3
             // 
@@ -1478,6 +1480,7 @@
             this.txtHeader3.Size = new System.Drawing.Size(35, 20);
             this.txtHeader3.TabIndex = 136;
             this.txtHeader3.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader3.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter9
             // 
@@ -1490,10 +1493,10 @@
             this.lblParameter9.TabIndex = 158;
             this.lblParameter9.Text = "9";
             this.lblParameter9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter9.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter9.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter9.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader4
             // 
@@ -1507,6 +1510,7 @@
             this.txtHeader4.Size = new System.Drawing.Size(35, 20);
             this.txtHeader4.TabIndex = 137;
             this.txtHeader4.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader4.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter8
             // 
@@ -1519,10 +1523,10 @@
             this.lblParameter8.TabIndex = 157;
             this.lblParameter8.Text = "8";
             this.lblParameter8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter8.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter8.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter8.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader5
             // 
@@ -1536,6 +1540,7 @@
             this.txtHeader5.Size = new System.Drawing.Size(35, 20);
             this.txtHeader5.TabIndex = 138;
             this.txtHeader5.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader5.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter7
             // 
@@ -1548,10 +1553,10 @@
             this.lblParameter7.TabIndex = 156;
             this.lblParameter7.Text = "7";
             this.lblParameter7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter7.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter7.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter7.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader6
             // 
@@ -1565,6 +1570,7 @@
             this.txtHeader6.Size = new System.Drawing.Size(35, 20);
             this.txtHeader6.TabIndex = 139;
             this.txtHeader6.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader6.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter6
             // 
@@ -1577,10 +1583,10 @@
             this.lblParameter6.TabIndex = 155;
             this.lblParameter6.Text = "6";
             this.lblParameter6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter6.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter6.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter6.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader7
             // 
@@ -1594,6 +1600,7 @@
             this.txtHeader7.Size = new System.Drawing.Size(35, 20);
             this.txtHeader7.TabIndex = 140;
             this.txtHeader7.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader7.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter5
             // 
@@ -1606,10 +1613,10 @@
             this.lblParameter5.TabIndex = 154;
             this.lblParameter5.Text = "5";
             this.lblParameter5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter5.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter5.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter5.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader8
             // 
@@ -1623,6 +1630,7 @@
             this.txtHeader8.Size = new System.Drawing.Size(35, 20);
             this.txtHeader8.TabIndex = 141;
             this.txtHeader8.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader8.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter4
             // 
@@ -1635,10 +1643,10 @@
             this.lblParameter4.TabIndex = 153;
             this.lblParameter4.Text = "4";
             this.lblParameter4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter4.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter4.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter4.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader9
             // 
@@ -1652,6 +1660,7 @@
             this.txtHeader9.Size = new System.Drawing.Size(35, 20);
             this.txtHeader9.TabIndex = 142;
             this.txtHeader9.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader9.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter3
             // 
@@ -1664,10 +1673,10 @@
             this.lblParameter3.TabIndex = 152;
             this.lblParameter3.Text = "3";
             this.lblParameter3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter3.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter3.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter3.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader10
             // 
@@ -1681,6 +1690,7 @@
             this.txtHeader10.Size = new System.Drawing.Size(35, 20);
             this.txtHeader10.TabIndex = 143;
             this.txtHeader10.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader10.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter2
             // 
@@ -1693,10 +1703,10 @@
             this.lblParameter2.TabIndex = 151;
             this.lblParameter2.Text = "2";
             this.lblParameter2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter2.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter2.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter2.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader11
             // 
@@ -1710,6 +1720,7 @@
             this.txtHeader11.Size = new System.Drawing.Size(35, 20);
             this.txtHeader11.TabIndex = 144;
             this.txtHeader11.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader11.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // lblParameter1
             // 
@@ -1722,10 +1733,10 @@
             this.lblParameter1.TabIndex = 150;
             this.lblParameter1.Text = "1";
             this.lblParameter1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblParameter1.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseDown);
-            this.lblParameter1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             this.lblParameter1.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
+            this.lblParameter1.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
+            this.lblParameter1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
             // 
             // txtHeader12
             // 
@@ -1739,6 +1750,7 @@
             this.txtHeader12.Size = new System.Drawing.Size(35, 20);
             this.txtHeader12.TabIndex = 145;
             this.txtHeader12.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader12.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // txtHeader16
             // 
@@ -1752,6 +1764,7 @@
             this.txtHeader16.Size = new System.Drawing.Size(35, 20);
             this.txtHeader16.TabIndex = 149;
             this.txtHeader16.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader16.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // txtHeader13
             // 
@@ -1765,6 +1778,7 @@
             this.txtHeader13.Size = new System.Drawing.Size(35, 20);
             this.txtHeader13.TabIndex = 146;
             this.txtHeader13.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader13.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // txtHeader15
             // 
@@ -1778,6 +1792,7 @@
             this.txtHeader15.Size = new System.Drawing.Size(35, 20);
             this.txtHeader15.TabIndex = 148;
             this.txtHeader15.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader15.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // txtHeader14
             // 
@@ -1791,6 +1806,7 @@
             this.txtHeader14.Size = new System.Drawing.Size(35, 20);
             this.txtHeader14.TabIndex = 147;
             this.txtHeader14.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtHeader14.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
             // cmbTranslators
             // 
@@ -2131,8 +2147,8 @@
             this.Name = "frmPreset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SynthControl Editor - ";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPreset_FormClosing);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.grpSysex.ResumeLayout(false);
             this.grpSysex.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numChannelType)).EndInit();

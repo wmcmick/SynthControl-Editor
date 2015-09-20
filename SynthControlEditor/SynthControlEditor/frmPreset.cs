@@ -387,8 +387,12 @@ namespace SynthControlEditor
         {
             Label lbl = (Label)sender;
 
-            foreach (Label label in lParameterLabels)
-                label.BackColor = Color.Black;
+            for(int i=0;i<lParameterLabels.Count;i++)
+            {
+                lParameterLabels[i].BackColor = Color.Black;
+                if (lbl == lParameterLabels[i])
+                    MessageBox.Show(i.ToString());
+            }
 
             lbl.BackColor = Color.DarkRed;
 
@@ -867,5 +871,16 @@ namespace SynthControlEditor
             // Reset presetChanged flag
             presetChanged = false;
         }
+
+        private void txtHeader_Enter(object sender, EventArgs e)
+        {
+            TextBox txtBox = (TextBox)sender;
+            for (int i = 0; i < lParameterHeaders.Count; i++)
+            {
+                if (txtBox == lParameterHeaders[i])
+                    MessageBox.Show(i.ToString());
+            }
+        }
+    
     }
 }
