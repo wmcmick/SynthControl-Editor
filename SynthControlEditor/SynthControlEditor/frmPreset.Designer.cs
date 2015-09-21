@@ -54,6 +54,7 @@
             this.txtTopRight = new System.Windows.Forms.TextBox();
             this.txtBottomLeft = new System.Windows.Forms.TextBox();
             this.txtBottomRight = new System.Windows.Forms.TextBox();
+            this.btnDuplicatePage = new System.Windows.Forms.Button();
             this.lblNumber1 = new System.Windows.Forms.Label();
             this.grpSysex = new System.Windows.Forms.GroupBox();
             this.numChannelType = new System.Windows.Forms.NumericUpDown();
@@ -114,6 +115,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblParameter16 = new System.Windows.Forms.Label();
+            this.contextMenuStripParameter = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemCopyParameter = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPasteParameter = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPasteParameterAll = new System.Windows.Forms.ToolStripMenuItem();
             this.lblParameter15 = new System.Windows.Forms.Label();
             this.lblParameter14 = new System.Windows.Forms.Label();
             this.lblParameter13 = new System.Windows.Forms.Label();
@@ -168,9 +173,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblPreset = new System.Windows.Forms.Label();
             this.lblPresetName = new System.Windows.Forms.Label();
-            this.contextMenuStripParameter = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemCopyParameter = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemPasteParameter = new System.Windows.Forms.ToolStripMenuItem();
             this.grpSysex.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numChannelType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBytes)).BeginInit();
@@ -181,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numLsbPos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLayers)).BeginInit();
             this.pnlDisplay.SuspendLayout();
+            this.contextMenuStripParameter.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpTranslator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTranslatorOffset)).BeginInit();
@@ -193,7 +196,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNumber4)).BeginInit();
             this.grpMainSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStepSize)).BeginInit();
-            this.contextMenuStripParameter.SuspendLayout();
             this.SuspendLayout();
             // 
             // label17
@@ -368,7 +370,7 @@
             // 
             // btnRemovePage
             // 
-            this.btnRemovePage.Location = new System.Drawing.Point(6, 141);
+            this.btnRemovePage.Location = new System.Drawing.Point(6, 149);
             this.btnRemovePage.Name = "btnRemovePage";
             this.btnRemovePage.Size = new System.Drawing.Size(74, 23);
             this.btnRemovePage.TabIndex = 132;
@@ -379,7 +381,7 @@
             // 
             // btnMovePageDown
             // 
-            this.btnMovePageDown.Location = new System.Drawing.Point(6, 106);
+            this.btnMovePageDown.Location = new System.Drawing.Point(6, 97);
             this.btnMovePageDown.Name = "btnMovePageDown";
             this.btnMovePageDown.Size = new System.Drawing.Size(74, 23);
             this.btnMovePageDown.TabIndex = 131;
@@ -390,7 +392,7 @@
             // 
             // btnMovePageUp
             // 
-            this.btnMovePageUp.Location = new System.Drawing.Point(6, 77);
+            this.btnMovePageUp.Location = new System.Drawing.Point(6, 71);
             this.btnMovePageUp.Name = "btnMovePageUp";
             this.btnMovePageUp.Size = new System.Drawing.Size(74, 23);
             this.btnMovePageUp.TabIndex = 130;
@@ -401,7 +403,7 @@
             // 
             // btnEditPage
             // 
-            this.btnEditPage.Location = new System.Drawing.Point(6, 48);
+            this.btnEditPage.Location = new System.Drawing.Point(6, 45);
             this.btnEditPage.Name = "btnEditPage";
             this.btnEditPage.Size = new System.Drawing.Size(74, 23);
             this.btnEditPage.TabIndex = 129;
@@ -479,6 +481,17 @@
             this.txtBottomRight.TabIndex = 133;
             this.tooltip.SetToolTip(this.txtBottomRight, "Second header row on right display (max 20 characters)");
             this.txtBottomRight.TextChanged += new System.EventHandler(this.txtHeader_TextChanged);
+            // 
+            // btnDuplicatePage
+            // 
+            this.btnDuplicatePage.Location = new System.Drawing.Point(6, 123);
+            this.btnDuplicatePage.Name = "btnDuplicatePage";
+            this.btnDuplicatePage.Size = new System.Drawing.Size(74, 23);
+            this.btnDuplicatePage.TabIndex = 134;
+            this.btnDuplicatePage.Text = "Dupli&cate";
+            this.tooltip.SetToolTip(this.btnDuplicatePage, "Remove the selected page from the preset");
+            this.btnDuplicatePage.UseVisualStyleBackColor = true;
+            this.btnDuplicatePage.Click += new System.EventHandler(this.btnDuplicatePage_Click);
             // 
             // lblNumber1
             // 
@@ -1276,9 +1289,9 @@
             // 
             this.btnPreview.Location = new System.Drawing.Point(19, 135);
             this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.Size = new System.Drawing.Size(83, 23);
             this.btnPreview.TabIndex = 174;
-            this.btnPreview.Text = "Preview";
+            this.btnPreview.Text = "Show Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
@@ -1348,6 +1361,37 @@
             this.lblParameter16.MouseEnter += new System.EventHandler(this.lblParameter_MouseEnter);
             this.lblParameter16.MouseLeave += new System.EventHandler(this.lblParameter_MouseLeave);
             this.lblParameter16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblParameter_MouseUp);
+            // 
+            // contextMenuStripParameter
+            // 
+            this.contextMenuStripParameter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopyParameter,
+            this.toolStripMenuItemPasteParameter,
+            this.toolStripMenuItemPasteParameterAll});
+            this.contextMenuStripParameter.Name = "contextMenuStripParameter";
+            this.contextMenuStripParameter.Size = new System.Drawing.Size(185, 70);
+            this.contextMenuStripParameter.Text = "Parameter";
+            // 
+            // toolStripMenuItemCopyParameter
+            // 
+            this.toolStripMenuItemCopyParameter.Name = "toolStripMenuItemCopyParameter";
+            this.toolStripMenuItemCopyParameter.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItemCopyParameter.Text = "Copy parameter";
+            this.toolStripMenuItemCopyParameter.Click += new System.EventHandler(this.toolStripMenuItemCopyParameter_Click);
+            // 
+            // toolStripMenuItemPasteParameter
+            // 
+            this.toolStripMenuItemPasteParameter.Name = "toolStripMenuItemPasteParameter";
+            this.toolStripMenuItemPasteParameter.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItemPasteParameter.Text = "Paste data";
+            this.toolStripMenuItemPasteParameter.Click += new System.EventHandler(this.toolStripMenuItemPasteParameter_Click);
+            // 
+            // toolStripMenuItemPasteParameterAll
+            // 
+            this.toolStripMenuItemPasteParameterAll.Name = "toolStripMenuItemPasteParameterAll";
+            this.toolStripMenuItemPasteParameterAll.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItemPasteParameterAll.Text = "Paste name and data";
+            this.toolStripMenuItemPasteParameterAll.Click += new System.EventHandler(this.toolStripMenuItemPasteParameter_Click);
             // 
             // lblParameter15
             // 
@@ -1878,14 +1922,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDuplicatePage);
             this.groupBox1.Controls.Add(this.btnNewPage);
             this.groupBox1.Controls.Add(this.btnRemovePage);
             this.groupBox1.Controls.Add(this.btnMovePageDown);
             this.groupBox1.Controls.Add(this.btnMovePageUp);
             this.groupBox1.Controls.Add(this.btnEditPage);
-            this.groupBox1.Location = new System.Drawing.Point(194, 15);
+            this.groupBox1.Location = new System.Drawing.Point(194, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(86, 170);
+            this.groupBox1.Size = new System.Drawing.Size(86, 181);
             this.groupBox1.TabIndex = 134;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pages";
@@ -2145,27 +2190,6 @@
             this.lblPresetName.TabIndex = 148;
             this.lblPresetName.Text = "Name";
             // 
-            // contextMenuStripParameter
-            // 
-            this.contextMenuStripParameter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCopyParameter,
-            this.toolStripMenuItemPasteParameter});
-            this.contextMenuStripParameter.Name = "contextMenuStripParameter";
-            this.contextMenuStripParameter.Size = new System.Drawing.Size(103, 48);
-            this.contextMenuStripParameter.Text = "Parameter";
-            // 
-            // toolStripMenuItemCopyParameter
-            // 
-            this.toolStripMenuItemCopyParameter.Name = "toolStripMenuItemCopyParameter";
-            this.toolStripMenuItemCopyParameter.Size = new System.Drawing.Size(102, 22);
-            this.toolStripMenuItemCopyParameter.Text = "Copy";
-            // 
-            // toolStripMenuItemPasteParameter
-            // 
-            this.toolStripMenuItemPasteParameter.Name = "toolStripMenuItemPasteParameter";
-            this.toolStripMenuItemPasteParameter.Size = new System.Drawing.Size(102, 22);
-            this.toolStripMenuItemPasteParameter.Text = "Paste";
-            // 
             // frmPreset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2202,6 +2226,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numLayers)).EndInit();
             this.pnlDisplay.ResumeLayout(false);
             this.pnlDisplay.PerformLayout();
+            this.contextMenuStripParameter.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.grpTranslator.ResumeLayout(false);
             this.grpTranslator.PerformLayout();
@@ -2216,7 +2241,6 @@
             this.grpMainSettings.ResumeLayout(false);
             this.grpMainSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStepSize)).EndInit();
-            this.contextMenuStripParameter.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2365,6 +2389,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripParameter;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopyParameter;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPasteParameter;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPasteParameterAll;
+        private System.Windows.Forms.Button btnDuplicatePage;
     }
 }
 

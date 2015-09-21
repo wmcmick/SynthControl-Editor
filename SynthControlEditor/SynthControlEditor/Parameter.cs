@@ -2,10 +2,13 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SynthControlEditor
 {
-    public class Parameter
+    [Serializable]
+    public class Parameter : ICloneable
     {
         public enum Types {NONE, CC7, CC14, RPN7, RPN14, NRPN7, NRPN14, SYSEX};
         public enum Translators {
@@ -85,5 +88,22 @@ namespace SynthControlEditor
                 hex.AppendFormat("{0:x2}", b);
             return hex.ToString();
         }
+
+        #region ICloneable Members
+        public object Clone()
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                if (this.GetType().IsSerializable)
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(stream, this);
+                    stream.Position = 0;
+                    return formatter.Deserialize(stream);
+                }
+                return null;
+            }
+        }
+        #endregion
     }
 }

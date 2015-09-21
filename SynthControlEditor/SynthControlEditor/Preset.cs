@@ -8,7 +8,7 @@ using ICSharpCode.SharpZipLib.Zip;
 
 namespace SynthControlEditor
 {
-    public class Preset
+    public class Preset : ICloneable
     {
         public string name;
         public string folderName;
@@ -37,7 +37,7 @@ namespace SynthControlEditor
             writer.Write(Encoding.ASCII.GetBytes(name));
             writer.Close();
 
-            DirectoryCopy.CopyDirectory(Path.Combine(sPresetsPath, folderName), Path.Combine(Path.Combine(sPresetsPath, "PresetToExport"), folderName), true);
+            DirectoryCopy.CopyDirectory(Path.Combine(sPresetsPath, folderName.Trim().Replace("\0", "")), Path.Combine(Path.Combine(sPresetsPath, "PresetToExport"), folderName.Trim().Replace("\0", "")), true);
 
             FastZip fastZip = new FastZip();
             fastZip.CreateEmptyDirectories = true;
@@ -68,5 +68,14 @@ namespace SynthControlEditor
 
             return true;
         }
+
+        #region ICloneable Members
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        #endregion
     }
 }

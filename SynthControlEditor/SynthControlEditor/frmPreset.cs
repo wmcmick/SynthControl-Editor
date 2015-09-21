@@ -50,6 +50,8 @@ namespace SynthControlEditor
         private frmDisplay displayForm;
 
         private bool presetChanged;
+
+        private Parameter clipboardParameter;
         
         public frmPreset(Preset pPreset, string sRootPath) : base() 
         {
@@ -556,6 +558,7 @@ namespace SynthControlEditor
             chkUseHighestExceeding.Checked = lviPageEdited.page.parameters[parameterNumber].translatorUseLastItemForExceeding;
             // Sysex
             numLength.Value = lviPageEdited.page.parameters[parameterNumber].sysex.length;
+            cmbChecksum.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].sysex.checksum;
             UpdateRanges();
             numChannel.Value = lviPageEdited.page.parameters[parameterNumber].sysex.channelPosition;
             numChannelType.Value = lviPageEdited.page.parameters[parameterNumber].sysex.channelType;
@@ -563,7 +566,6 @@ namespace SynthControlEditor
             numBytes.Value = lviPageEdited.page.parameters[parameterNumber].sysex.parameterBytes;
             numLsbPos.Value = lviPageEdited.page.parameters[parameterNumber].sysex.valueLsbPosition;
             numMsbPos.Value = lviPageEdited.page.parameters[parameterNumber].sysex.valueMsbPosition;
-            cmbChecksum.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].sysex.checksum;
             for (int i = 0; i < 17; i++)
                 lSysex[i].Text = lviPageEdited.page.parameters[parameterNumber].sysex.message[i];
             for (int i = 0; i < 3; i++)
@@ -711,11 +713,19 @@ namespace SynthControlEditor
         {
             if (lstPages.SelectedItems.Count > 0)
             {
-                if (MessageBox.Show("Are you sure you wish to remove the page named \"" + lstPages.SelectedItems[0].Text + "\"?", "SynthControl Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if ((ListViewItemPage)lstPages.SelectedItems[0] == lviPageEdited)
                 {
-                    lstPages.Items.RemoveAt(lstPages.SelectedIndices[0]);
-                    presetChanged = true;
+                    MessageBox.Show("Cannot remove the page currently being edited!","SynthControl Editor",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
+                else
+                {
+                    if (MessageBox.Show("Are you sure you wish to remove the page named \"" + lstPages.SelectedItems[0].Text + "\"?", "SynthControl Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        lstPages.Items.RemoveAt(lstPages.SelectedIndices[0]);
+                        presetChanged = true;
+                    }
+                }
+
             }
             else
                 MessageBox.Show("No preset selected!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -741,6 +751,8 @@ namespace SynthControlEditor
             {
                 lviPageEdited.page.name = txtPageName.Text;
                 lviPageEdited.Text = txtPageName.Text;
+                if (displayForm != null && lviPageEdited != null)
+                    displayForm.UpdateDisplay(preset, lviPageEdited.page, parameterNumber);
                 presetChanged = true;
             }
         }
@@ -749,11 +761,20 @@ namespace SynthControlEditor
         {
             if (displayForm == null)
                 displayForm = new frmDisplay();
-            
+
             if (!displayForm.Visible)
+            {
                 displayForm.Show();
-            //else
-            //    displayForm.Hide();
+                btnPreview.Text = "Hide Preview";
+            }
+            else
+            {
+                displayForm.Hide();
+                btnPreview.Text = "Show Preview";
+            }
+
+            if (displayForm != null && lviPageEdited != null)
+                displayForm.UpdateDisplay(preset, lviPageEdited.page, parameterNumber);
         }
 
         private void frmPreset_FormClosing(object sender, FormClosingEventArgs e)
@@ -790,6 +811,7 @@ namespace SynthControlEditor
                         ListViewItemPage lvi = new ListViewItemPage();
                         lvi.Text = sTmp;
                         lvi.page.Load(Path.Combine(sFolder, "p" + i.ToString() + ".pag"));
+                        lvi.page.name = sTmp;
                         lstPages.Items.Add(lvi);
                     }
                     
@@ -885,6 +907,56 @@ namespace SynthControlEditor
                     ChangeParameter(lParameterLabels[i]);
                     break;
                 }
+            }
+        }
+
+        private void toolStripMenuItemCopyParameter_Click(object sender, EventArgs e)
+        {
+            clipboardParameter = (Parameter)lviPageEdited.page.parameters[parameterNumber].Clone();
+        }
+
+        private void toolStripMenuItemPasteParameter_Click(object sender, EventArgs e)
+        {
+            readingParameter = true;
+            string sLongName = lviPageEdited.page.parameters[parameterNumber].nameLong;
+            string sShortName = lviPageEdited.page.parameters[parameterNumber].nameShort;
+            lviPageEdited.page.parameters[parameterNumber] = (Parameter)clipboardParameter.Clone();
+            if (toolStripMenuItemPasteParameter == (ToolStripMenuItem)sender)
+            {
+                lviPageEdited.page.parameters[parameterNumber].nameLong = sLongName;
+                lviPageEdited.page.parameters[parameterNumber].nameShort = sShortName;      
+            }
+            ReadHeaders();
+            ReadParameter(parameterNumber);
+            if (displayForm != null && lviPageEdited != null)
+                displayForm.UpdateDisplay(preset, lviPageEdited.page, parameterNumber);
+            readingParameter = false;
+            presetChanged = true;
+
+        }
+
+        private void btnDuplicatePage_Click(object sender, EventArgs e)
+        {
+            if (lstPages.SelectedIndices.Count > 0)
+            {
+                frmPageName frmNewPage = new frmPageName("");
+                if (frmNewPage.ShowDialog() == DialogResult.OK)
+                {
+                    if (frmNewPage.name.Length > 0)
+                    {
+                        ListViewItemPage lvi = new ListViewItemPage();
+                        ListViewItemPage lviSelected = (ListViewItemPage)lstPages.SelectedItems[0];
+                        //lvi.page = (Page)lviSelected.page.Clone();
+                        Page pag = (Page)(lviSelected.page.Clone());
+                        lvi.page = pag;
+                        lvi.Text = frmNewPage.name;
+                        lvi.page.name = frmNewPage.name;
+                        lstPages.Items.Add(lvi);
+                        presetChanged = true;
+                    }
+                    else
+                        MessageBox.Show("Page name cannot be empty!");
+                }               
             }
         }
     

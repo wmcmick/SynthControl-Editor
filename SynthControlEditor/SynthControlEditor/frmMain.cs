@@ -224,6 +224,7 @@ namespace SynthControlEditor
 
         private void btnAddExisting_Click(object sender, EventArgs e)
         {
+            openFileDialog.Title = "Import...";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 if (File.Exists(openFileDialog.FileName))
@@ -243,6 +244,7 @@ namespace SynthControlEditor
         {
             if (lstPresets.SelectedItems.Count > 0)
             {
+                saveFileDialog.Title = "Export to...";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Preset preset = new Preset();

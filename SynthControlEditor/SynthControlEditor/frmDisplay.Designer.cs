@@ -40,7 +40,7 @@
             this.txtDisplay1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDisplay1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDisplay1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.txtDisplay1.Location = new System.Drawing.Point(286, 12);
+            this.txtDisplay1.Location = new System.Drawing.Point(260, 12);
             this.txtDisplay1.MaxLength = 20;
             this.txtDisplay1.Multiline = true;
             this.txtDisplay1.Name = "txtDisplay1";
@@ -85,6 +85,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(723, 100);
+            this.ControlBox = false;
             this.Controls.Add(this.txtDisplayMain);
             this.Controls.Add(this.txtDisplay2);
             this.Controls.Add(this.txtDisplay1);

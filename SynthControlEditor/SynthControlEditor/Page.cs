@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SynthControlEditor
 {
-    public class Page
+    [Serializable]
+    public class Page : ICloneable
     {
         public List<string> headers;
         public List<Parameter> parameters;
@@ -189,6 +191,25 @@ namespace SynthControlEditor
             for (int i = 0; i < 16; i++)
                 parameters.Add(new Parameter());
         }
+
+        #region ICloneable Members
+
+        public object Clone()
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                if (this.GetType().IsSerializable)
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(stream, this);
+                    stream.Position = 0;
+                    return formatter.Deserialize(stream);
+                }
+                return null;
+            }
+        }
+
+        #endregion
 
     }
 }

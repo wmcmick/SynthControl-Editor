@@ -5,6 +5,7 @@ using System.Text;
 
 namespace SynthControlEditor
 {
+    [Serializable]
     public class Sysex
     {
         enum Checksum { NONE, ROLAND, WALDORF };
@@ -60,6 +61,15 @@ namespace SynthControlEditor
                 mess.Add(sSysex.Substring(i, 2));
             }
         }
+
+        #region ICloneable Members
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        #endregion
 
         /*public string GetMessage(byte layer)
         {

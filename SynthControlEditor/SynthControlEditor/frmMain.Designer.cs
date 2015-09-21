@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.lstPresets = new System.Windows.Forms.ListView();
-            this.clmnPresetName = new System.Windows.Forms.ColumnHeader();
-            this.clmnPresetFolder = new System.Windows.Forms.ColumnHeader();
-            this.clmnPresetVisible = new System.Windows.Forms.ColumnHeader();
+            this.clmnPresetName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmnPresetFolder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmnPresetVisible = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtFolder = new System.Windows.Forms.TextBox();
             this.btnChooseFolder = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -50,6 +50,7 @@
             this.btnQuit = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSettings = new System.Windows.Forms.Button();
+            this.btnDuplicate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstPresets
@@ -119,7 +120,7 @@
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(335, 235);
+            this.btnMoveUp.Location = new System.Drawing.Point(335, 215);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(85, 23);
             this.btnMoveUp.TabIndex = 4;
@@ -130,7 +131,7 @@
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(335, 264);
+            this.btnMoveDown.Location = new System.Drawing.Point(335, 244);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(85, 23);
             this.btnMoveDown.TabIndex = 5;
@@ -214,7 +215,7 @@
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(335, 127);
+            this.btnSettings.Location = new System.Drawing.Point(335, 156);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(85, 23);
             this.btnSettings.TabIndex = 12;
@@ -222,12 +223,23 @@
             this.toolTip.SetToolTip(this.btnSettings, "Rename the selected preset");
             this.btnSettings.UseVisualStyleBackColor = true;
             // 
+            // btnDuplicate
+            // 
+            this.btnDuplicate.Location = new System.Drawing.Point(335, 127);
+            this.btnDuplicate.Name = "btnDuplicate";
+            this.btnDuplicate.Size = new System.Drawing.Size(85, 23);
+            this.btnDuplicate.TabIndex = 13;
+            this.btnDuplicate.Text = "Dupli&cate";
+            this.toolTip.SetToolTip(this.btnDuplicate, "Edit the selected preset");
+            this.btnDuplicate.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(430, 549);
+            this.Controls.Add(this.btnDuplicate);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnRename);
@@ -275,5 +287,6 @@
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnDuplicate;
     }
 }
