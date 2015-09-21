@@ -385,14 +385,15 @@ namespace SynthControlEditor
 
         private void lblParameter_MouseDown(object sender, MouseEventArgs e)
         {
-            Label lbl = (Label)sender;
+            ChangeParameter((Label)sender);
+            //if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            //    menuStripParameter.Show();
+        }
 
-            for(int i=0;i<lParameterLabels.Count;i++)
-            {
+        private void ChangeParameter(Label lbl)
+        {
+            for (int i = 0; i < lParameterLabels.Count; i++)
                 lParameterLabels[i].BackColor = Color.Black;
-                if (lbl == lParameterLabels[i])
-                    MessageBox.Show(i.ToString());
-            }
 
             lbl.BackColor = Color.DarkRed;
 
@@ -401,8 +402,8 @@ namespace SynthControlEditor
             parameterNumber = Convert.ToInt16(lbl.Text) - 1;
             ReadParameter(parameterNumber);
             readingParameter = false;
-            
-            if(displayForm != null && lviPageEdited != null)
+
+            if (displayForm != null && lviPageEdited != null)
                 displayForm.UpdateDisplay(preset, lviPageEdited.page, parameterNumber);
         }
 
@@ -875,10 +876,15 @@ namespace SynthControlEditor
         private void txtHeader_Enter(object sender, EventArgs e)
         {
             TextBox txtBox = (TextBox)sender;
+
+
             for (int i = 0; i < lParameterHeaders.Count; i++)
             {
                 if (txtBox == lParameterHeaders[i])
-                    MessageBox.Show(i.ToString());
+                {
+                    ChangeParameter(lParameterLabels[i]);
+                    break;
+                }
             }
         }
     

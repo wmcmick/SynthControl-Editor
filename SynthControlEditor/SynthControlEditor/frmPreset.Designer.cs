@@ -168,6 +168,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblPreset = new System.Windows.Forms.Label();
             this.lblPresetName = new System.Windows.Forms.Label();
+            this.contextMenuStripParameter = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemCopyParameter = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPasteParameter = new System.Windows.Forms.ToolStripMenuItem();
             this.grpSysex.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numChannelType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBytes)).BeginInit();
@@ -190,6 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNumber4)).BeginInit();
             this.grpMainSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStepSize)).BeginInit();
+            this.contextMenuStripParameter.SuspendLayout();
             this.SuspendLayout();
             // 
             // label17
@@ -1331,6 +1335,7 @@
             // lblParameter16
             // 
             this.lblParameter16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter16.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter16.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter16.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter16.Location = new System.Drawing.Point(602, 141);
@@ -1347,6 +1352,7 @@
             // lblParameter15
             // 
             this.lblParameter15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter15.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter15.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter15.Location = new System.Drawing.Point(561, 141);
@@ -1363,6 +1369,7 @@
             // lblParameter14
             // 
             this.lblParameter14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter14.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter14.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter14.Location = new System.Drawing.Point(520, 141);
@@ -1379,6 +1386,7 @@
             // lblParameter13
             // 
             this.lblParameter13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter13.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter13.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter13.Location = new System.Drawing.Point(479, 141);
@@ -1395,6 +1403,7 @@
             // lblParameter12
             // 
             this.lblParameter12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter12.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter12.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter12.Location = new System.Drawing.Point(420, 141);
@@ -1425,6 +1434,7 @@
             // lblParameter11
             // 
             this.lblParameter11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter11.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter11.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter11.Location = new System.Drawing.Point(379, 141);
@@ -1455,6 +1465,7 @@
             // lblParameter10
             // 
             this.lblParameter10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter10.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter10.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter10.Location = new System.Drawing.Point(338, 141);
@@ -1485,6 +1496,7 @@
             // lblParameter9
             // 
             this.lblParameter9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter9.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter9.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter9.Location = new System.Drawing.Point(297, 141);
@@ -1515,6 +1527,7 @@
             // lblParameter8
             // 
             this.lblParameter8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter8.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter8.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter8.Location = new System.Drawing.Point(602, 64);
@@ -1545,6 +1558,7 @@
             // lblParameter7
             // 
             this.lblParameter7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter7.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter7.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter7.Location = new System.Drawing.Point(561, 64);
@@ -1575,6 +1589,7 @@
             // lblParameter6
             // 
             this.lblParameter6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter6.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter6.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter6.Location = new System.Drawing.Point(520, 64);
@@ -1605,6 +1620,7 @@
             // lblParameter5
             // 
             this.lblParameter5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter5.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter5.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter5.Location = new System.Drawing.Point(479, 64);
@@ -1635,6 +1651,7 @@
             // lblParameter4
             // 
             this.lblParameter4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter4.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter4.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter4.Location = new System.Drawing.Point(420, 64);
@@ -1665,6 +1682,7 @@
             // lblParameter3
             // 
             this.lblParameter3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter3.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter3.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter3.Location = new System.Drawing.Point(379, 64);
@@ -1695,6 +1713,7 @@
             // lblParameter2
             // 
             this.lblParameter2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter2.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter2.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter2.Location = new System.Drawing.Point(338, 64);
@@ -1725,6 +1744,7 @@
             // lblParameter1
             // 
             this.lblParameter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblParameter1.ContextMenuStrip = this.contextMenuStripParameter;
             this.lblParameter1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblParameter1.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblParameter1.Location = new System.Drawing.Point(297, 64);
@@ -2125,6 +2145,27 @@
             this.lblPresetName.TabIndex = 148;
             this.lblPresetName.Text = "Name";
             // 
+            // contextMenuStripParameter
+            // 
+            this.contextMenuStripParameter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopyParameter,
+            this.toolStripMenuItemPasteParameter});
+            this.contextMenuStripParameter.Name = "contextMenuStripParameter";
+            this.contextMenuStripParameter.Size = new System.Drawing.Size(103, 48);
+            this.contextMenuStripParameter.Text = "Parameter";
+            // 
+            // toolStripMenuItemCopyParameter
+            // 
+            this.toolStripMenuItemCopyParameter.Name = "toolStripMenuItemCopyParameter";
+            this.toolStripMenuItemCopyParameter.Size = new System.Drawing.Size(102, 22);
+            this.toolStripMenuItemCopyParameter.Text = "Copy";
+            // 
+            // toolStripMenuItemPasteParameter
+            // 
+            this.toolStripMenuItemPasteParameter.Name = "toolStripMenuItemPasteParameter";
+            this.toolStripMenuItemPasteParameter.Size = new System.Drawing.Size(102, 22);
+            this.toolStripMenuItemPasteParameter.Text = "Paste";
+            // 
             // frmPreset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2175,6 +2216,7 @@
             this.grpMainSettings.ResumeLayout(false);
             this.grpMainSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStepSize)).EndInit();
+            this.contextMenuStripParameter.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2320,6 +2362,9 @@
         private System.Windows.Forms.Label lblPreset;
         private System.Windows.Forms.Label lblPresetName;
         private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripParameter;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopyParameter;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPasteParameter;
     }
 }
 
