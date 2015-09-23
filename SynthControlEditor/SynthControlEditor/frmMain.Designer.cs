@@ -51,6 +51,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnDuplicate = new System.Windows.Forms.Button();
+            this.btnSysex = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstPresets
@@ -120,7 +121,7 @@
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(335, 215);
+            this.btnMoveUp.Location = new System.Drawing.Point(335, 229);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(85, 23);
             this.btnMoveUp.TabIndex = 4;
@@ -131,7 +132,7 @@
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(335, 244);
+            this.btnMoveDown.Location = new System.Drawing.Point(335, 258);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(85, 23);
             this.btnMoveDown.TabIndex = 5;
@@ -215,7 +216,7 @@
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(335, 156);
+            this.btnSettings.Location = new System.Drawing.Point(335, 185);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(85, 23);
             this.btnSettings.TabIndex = 12;
@@ -233,12 +234,24 @@
             this.toolTip.SetToolTip(this.btnDuplicate, "Edit the selected preset");
             this.btnDuplicate.UseVisualStyleBackColor = true;
             // 
+            // btnSysex
+            // 
+            this.btnSysex.Location = new System.Drawing.Point(335, 156);
+            this.btnSysex.Name = "btnSysex";
+            this.btnSysex.Size = new System.Drawing.Size(85, 23);
+            this.btnSysex.TabIndex = 14;
+            this.btnSysex.Text = "S&ysex...";
+            this.toolTip.SetToolTip(this.btnSysex, "Rename the selected preset");
+            this.btnSysex.UseVisualStyleBackColor = true;
+            this.btnSysex.Click += new System.EventHandler(this.btnSysex_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(430, 549);
+            this.Controls.Add(this.btnSysex);
             this.Controls.Add(this.btnDuplicate);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnQuit);
@@ -257,7 +270,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "SynthControl Editor v0.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.ResumeLayout(false);
@@ -288,5 +301,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnDuplicate;
+        private System.Windows.Forms.Button btnSysex;
     }
 }

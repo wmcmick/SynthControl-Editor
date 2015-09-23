@@ -59,6 +59,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\Mick\Desktop\SharpZipLib_0860_Bin\net-20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Knob">
+      <HintPath>..\..\..\..\Dropbox\Projects\Universal Midi Controller\C#\Knob\Knob\Knob\bin\Release\Knob.dll</HintPath>
+    </Reference>
+    <Reference Include="Sanford.Multimedia.Midi">
+      <HintPath>..\..\..\..\Dropbox\Projects\Universal Midi Controller\C#\Sanford.Multimedia.Midi-master\Midi\bin\Release\Sanford.Multimedia.Midi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -76,6 +82,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmSysexName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSysexName.Designer.cs">
+      <DependentUpon>frmSysexName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSysex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSysex.Designer.cs">
+      <DependentUpon>frmSysex.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +151,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmSysexName.resx">
+      <DependentUpon>frmSysexName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSysex.resx">
+      <DependentUpon>frmSysex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>

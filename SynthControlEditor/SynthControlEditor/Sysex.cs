@@ -32,9 +32,9 @@ namespace SynthControlEditor
             SetMessage("000000", 3);
             SetMessage("000000", 4);
             length = (byte)message.Count;
-            valueLsbPosition = 16;
+            valueLsbPosition = 5;
             valueMsbPosition = 2;
-            parameterPosition = 15;
+            parameterPosition = 4;
             parameterBytes = 1;
             checksum = (byte)Checksum.NONE;
             channelPosition = 2;    // No channel data, must be 3 or more to show

@@ -45,7 +45,6 @@ C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\Sy
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.pdb
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\SynthControlEditor.exe
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\SynthControlEditor.pdb
-C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControl Editor.csprojResolveAssemblyReference.cache
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmSettings.resources
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmTranslatorDescription.resources
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmDisplay.resources
@@ -56,3 +55,9 @@ C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\Sy
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmTranslators.resources
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.Properties.Resources.resources
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControl Editor.csproj.GenerateResource.Cache
+C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmSysex.resources
+C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmSysexName.resources
+C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControl Editor.csprojResolveAssemblyReference.cache
+C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Sanford.Multimedia.Midi.dll
+C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Sanford.Multimedia.Midi.xml
+C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Knob.dll

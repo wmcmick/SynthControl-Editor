@@ -25,6 +25,8 @@ namespace SynthControlEditor
 
             InitializeComponent();
 
+            this.Location = SynthControlEditor.Properties.Settings.Default.FormTranslatorsPosition;
+
             translator = new Translator(Translator.GetMaxLength(iTranslatorNumber), iTranslatorNumber, sTranslatorName);
             string sFilename = "t" + iTranslatorNumber.ToString() + ".trl";
             if (File.Exists(Path.Combine(sFolder, sFilename)))
@@ -184,6 +186,8 @@ namespace SynthControlEditor
 
             if (save)
                 SaveTranslator();
+
+            SynthControlEditor.Properties.Settings.Default.FormTranslatorsPosition = this.Location;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace SynthControlEditor
     [Serializable]
     public class Parameter : ICloneable
     {
-        public enum Types {NONE, CC7, CC14, RPN7, RPN14, NRPN7, NRPN14, SYSEX};
+        public enum Types {NONE, CC7, CC14, RPN7, RPN14, NRPN7, NRPN14, SYSEX, PB, AT};
         public enum Translators {
             NONE, TRANSLATOR1, TRANSLATOR2, TRANSLATOR3,
             TRANSLATOR4, TRANSLATOR5, TRANSLATOR6, TRANSLATOR7, TRANSLATOR8,

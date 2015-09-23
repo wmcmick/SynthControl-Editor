@@ -34,5 +34,89 @@ namespace SynthControlEditor.Properties {
                 this["FolderMain"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MidiDevice {
+            get {
+                return ((string)(this["MidiDevice"]));
+            }
+            set {
+                this["MidiDevice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PreviewOnTop {
+            get {
+                return ((bool)(this["PreviewOnTop"]));
+            }
+            set {
+                this["PreviewOnTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point FormMainPosition {
+            get {
+                return ((global::System.Drawing.Point)(this["FormMainPosition"]));
+            }
+            set {
+                this["FormMainPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point FormPresetPosition {
+            get {
+                return ((global::System.Drawing.Point)(this["FormPresetPosition"]));
+            }
+            set {
+                this["FormPresetPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point FormDisplayPosition {
+            get {
+                return ((global::System.Drawing.Point)(this["FormDisplayPosition"]));
+            }
+            set {
+                this["FormDisplayPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point FormTranslatorsPosition {
+            get {
+                return ((global::System.Drawing.Point)(this["FormTranslatorsPosition"]));
+            }
+            set {
+                this["FormTranslatorsPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point FormSysexPosition {
+            get {
+                return ((global::System.Drawing.Point)(this["FormSysexPosition"]));
+            }
+            set {
+                this["FormSysexPosition"] = value;
+            }
+        }
     }
 }

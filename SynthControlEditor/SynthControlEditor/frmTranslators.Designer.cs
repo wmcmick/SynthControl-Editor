@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTranslators));
             this.lstTranslator = new System.Windows.Forms.ListView();
-            this.clmnValue = new System.Windows.Forms.ColumnHeader();
-            this.clmnDescription = new System.Windows.Forms.ColumnHeader();
+            this.clmnValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmnDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -177,7 +177,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmTranslators";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "SynthControl Editor - Translator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTranslators_FormClosing);
             this.ResumeLayout(false);

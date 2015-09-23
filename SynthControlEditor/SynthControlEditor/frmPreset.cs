@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
+using Sanford.Multimedia.Midi;
+using AuSharp;
+
 namespace SynthControlEditor
 {
     public partial class frmPreset : Form
@@ -22,6 +25,8 @@ namespace SynthControlEditor
         public const int TYPE_NRPN7BIT = 5;
         public const int TYPE_NRPN14BIT = 6;
         public const int TYPE_SYSEX = 7;
+        public const int TYPE_PB = 8;
+        public const int TYPE_AT = 9;
         
         private Preset preset;
         string rootPath;
@@ -52,6 +57,10 @@ namespace SynthControlEditor
         private bool presetChanged;
 
         private Parameter clipboardParameter;
+
+        private OutputDevice midiOut = null;
+
+        //private Knob knob = null;
         
         public frmPreset(Preset pPreset, string sRootPath) : base() 
         {
@@ -64,6 +73,8 @@ namespace SynthControlEditor
             readingParameter = true;
 
             InitializeComponent();
+
+            this.Location = SynthControlEditor.Properties.Settings.Default.FormPresetPosition;
 
             this.Text += preset.name;
             lblPresetName.Text = preset.name;
@@ -429,6 +440,7 @@ namespace SynthControlEditor
 
             if (!readingParameter)
             {
+                UpdateNumRanges();
                 UpdateLayers();
                 UpdateColors();
                 ParameterValuesChanged();
@@ -522,26 +534,7 @@ namespace SynthControlEditor
             txtFullName.Text = lviPageEdited.page.parameters[parameterNumber].nameLong;
             cmbType.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].type;
 
-            if (cmbType.SelectedIndex == TYPE_CC14BIT || cmbType.SelectedIndex == TYPE_NRPN14BIT || cmbType.SelectedIndex == TYPE_RPN14BIT || cmbType.SelectedIndex == TYPE_SYSEX)
-            {
-                numMin.Maximum =
-                    numMax.Maximum =
-                    numStepSize.Maximum = 
-                    numNumber1.Maximum = 
-                    numNumber2.Maximum = 
-                    numNumber3.Maximum = 
-                    numNumber4.Maximum = 16383;
-            }
-            else
-            {
-                numMin.Maximum =
-                    numMax.Maximum =
-                    numStepSize.Maximum =
-                    numNumber1.Maximum =
-                    numNumber2.Maximum =
-                    numNumber3.Maximum =
-                    numNumber4.Maximum = 16383;
-            }
+            UpdateNumRanges();
 
             numMin.Value = lviPageEdited.page.parameters[parameterNumber].min;
             numMax.Value = lviPageEdited.page.parameters[parameterNumber].max;
@@ -580,6 +573,63 @@ namespace SynthControlEditor
             UpdateRanges();
             UpdateColors();
 
+        }
+
+        private void UpdateNumRanges()
+        {
+            if (cmbType.SelectedIndex == TYPE_CC14BIT || cmbType.SelectedIndex == TYPE_NRPN7BIT || cmbType.SelectedIndex == TYPE_RPN7BIT || cmbType.SelectedIndex == TYPE_NRPN14BIT || cmbType.SelectedIndex == TYPE_RPN14BIT || cmbType.SelectedIndex == TYPE_SYSEX || cmbType.SelectedIndex == TYPE_PB)
+            {
+                numMin.Maximum =
+                    numMax.Maximum =
+                    numStepSize.Maximum =
+                    numDisplayOffset.Maximum =
+                    numNumber1.Maximum =
+                    numNumber2.Maximum =
+                    numNumber3.Maximum =
+                    numNumber4.Maximum = 16383;
+                numDisplayOffset.Minimum = -16383;
+                if (cmbType.SelectedIndex == TYPE_CC14BIT)
+                {
+                    numNumber1.Maximum =
+                        numNumber2.Maximum =
+                        numNumber3.Maximum =
+                        numNumber4.Maximum = 31;
+                }
+                else if (cmbType.SelectedIndex == TYPE_PB)
+                {
+                    numNumber1.Maximum =
+                        numNumber2.Maximum =
+                        numNumber3.Maximum =
+                        numNumber4.Maximum = 0;
+                }
+                else if (cmbType.SelectedIndex == TYPE_NRPN7BIT || cmbType.SelectedIndex == TYPE_RPN7BIT)
+                {
+                    numMin.Maximum =
+                        numMax.Maximum =
+                        numStepSize.Maximum =
+                        numDisplayOffset.Maximum = 127;
+                    numDisplayOffset.Minimum = -127;
+                }
+            }
+            else
+            {
+                numMin.Maximum =
+                    numMax.Maximum =
+                    numStepSize.Maximum =
+                    numDisplayOffset.Maximum =
+                    numNumber1.Maximum =
+                    numNumber2.Maximum =
+                    numNumber3.Maximum =
+                    numNumber4.Maximum = 127;
+                numDisplayOffset.Minimum = -127;
+                if (cmbType.SelectedIndex == TYPE_AT)
+                {
+                    numNumber1.Maximum =
+                        numNumber2.Maximum =
+                        numNumber3.Maximum =
+                        numNumber4.Maximum = 0;
+                }
+            }
         }
 
         private void txtParameter_TextChanged(object sender, EventArgs e)
@@ -779,10 +829,16 @@ namespace SynthControlEditor
 
         private void frmPreset_FormClosing(object sender, FormClosingEventArgs e)
         {
+            try {
+                if (midiOut != null)
+                    midiOut.Close();
+            }
+            catch (Exception) { }
+            
             if (displayForm != null)
             {
                 displayForm.Hide();
-                displayForm.Dispose();
+                displayForm.Close();
             }
 
             bool save = false;
@@ -792,6 +848,8 @@ namespace SynthControlEditor
 
             if (save)
                 SavePages();
+
+            SynthControlEditor.Properties.Settings.Default.FormPresetPosition = this.Location;
         }
 
         private void LoadPages()
@@ -959,6 +1017,22 @@ namespace SynthControlEditor
                 }               
             }
         }
-    
+
+        int map(int s, int a1, int a2, int b1, int b2)
+        {
+            return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+        }
+
+        private void control_MouseEnter(object sender, EventArgs e)
+        {
+            string hint = tooltip.GetToolTip((Control)sender);
+            txtHelp.Text = hint;
+        }
+
+        private void control_MouseLeave(object sender, EventArgs e)
+        {
+            txtHelp.Text = "";
+        }
+
     }
 }

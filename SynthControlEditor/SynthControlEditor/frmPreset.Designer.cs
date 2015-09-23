@@ -55,6 +55,7 @@
             this.txtBottomLeft = new System.Windows.Forms.TextBox();
             this.txtBottomRight = new System.Windows.Forms.TextBox();
             this.btnDuplicatePage = new System.Windows.Forms.Button();
+            this.txtSysex4 = new System.Windows.Forms.TextBox();
             this.lblNumber1 = new System.Windows.Forms.Label();
             this.grpSysex = new System.Windows.Forms.GroupBox();
             this.numChannelType = new System.Windows.Forms.NumericUpDown();
@@ -100,7 +101,6 @@
             this.txtSysex7 = new System.Windows.Forms.TextBox();
             this.txtSysex6 = new System.Windows.Forms.TextBox();
             this.txtSysex5 = new System.Windows.Forms.TextBox();
-            this.txtSysex4 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.numLayers = new System.Windows.Forms.NumericUpDown();
@@ -173,6 +173,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblPreset = new System.Windows.Forms.Label();
             this.lblPresetName = new System.Windows.Forms.Label();
+            this.grpHelp = new System.Windows.Forms.GroupBox();
+            this.txtHelp = new System.Windows.Forms.TextBox();
             this.grpSysex.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numChannelType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBytes)).BeginInit();
@@ -196,6 +198,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNumber4)).BeginInit();
             this.grpMainSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStepSize)).BeginInit();
+            this.grpHelp.SuspendLayout();
             this.SuspendLayout();
             // 
             // label17
@@ -235,7 +238,9 @@
             "RPN 14-bit",
             "NRPN 7-bit",
             "NRPN 14-bit",
-            "SYSEX"});
+            "SYSEX",
+            "Pitch Bend",
+            "Ch. Aftertouch"});
             this.cmbType.Location = new System.Drawing.Point(59, 26);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(103, 22);
@@ -279,6 +284,10 @@
             this.label22.TabIndex = 48;
             this.label22.Text = "Display Offset";
             // 
+            // tooltip
+            // 
+            this.tooltip.Active = false;
+            // 
             // txtSysex3
             // 
             this.txtSysex3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -290,8 +299,10 @@
             this.txtSysex3.TabIndex = 90;
             this.txtSysex3.Text = "00";
             this.txtSysex3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tooltip.SetToolTip(this.txtSysex3, "Usually Device ID");
+            this.tooltip.SetToolTip(this.txtSysex3, "The third byte is commonly the Device ID");
             this.txtSysex3.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex3.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex3.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // txtSysex2
             // 
@@ -304,23 +315,29 @@
             this.txtSysex2.TabIndex = 89;
             this.txtSysex2.Text = "00";
             this.txtSysex2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tooltip.SetToolTip(this.txtSysex2, "Manufacturer ID");
+            this.tooltip.SetToolTip(this.txtSysex2, "The second byte is the Manufacturer ID.");
             this.txtSysex2.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex2.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex2.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // txtSysex1
             // 
             this.txtSysex1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSysex1.Enabled = false;
+            this.txtSysex1.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtSysex1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSysex1.Location = new System.Drawing.Point(59, 23);
             this.txtSysex1.MaxLength = 2;
             this.txtSysex1.Name = "txtSysex1";
+            this.txtSysex1.ReadOnly = true;
             this.txtSysex1.Size = new System.Drawing.Size(26, 20);
             this.txtSysex1.TabIndex = 88;
             this.txtSysex1.Text = "F0";
             this.txtSysex1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tooltip.SetToolTip(this.txtSysex1, "Start of Sysex");
+            this.tooltip.SetToolTip(this.txtSysex1, "This is the start byte for a sysex message. It is always present and cannot be re" +
+        "moved or modified.");
             this.txtSysex1.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex1.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex1.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // chkLayersChannels
             // 
@@ -492,6 +509,22 @@
             this.tooltip.SetToolTip(this.btnDuplicatePage, "Remove the selected page from the preset");
             this.btnDuplicatePage.UseVisualStyleBackColor = true;
             this.btnDuplicatePage.Click += new System.EventHandler(this.btnDuplicatePage_Click);
+            // 
+            // txtSysex4
+            // 
+            this.txtSysex4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSysex4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSysex4.Location = new System.Drawing.Point(155, 23);
+            this.txtSysex4.MaxLength = 2;
+            this.txtSysex4.Name = "txtSysex4";
+            this.txtSysex4.Size = new System.Drawing.Size(26, 20);
+            this.txtSysex4.TabIndex = 91;
+            this.txtSysex4.Text = "00";
+            this.txtSysex4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tooltip.SetToolTip(this.txtSysex4, "The fourth byte is often the Model ID");
+            this.txtSysex4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // lblNumber1
             // 
@@ -747,12 +780,15 @@
             this.numBytes.Size = new System.Drawing.Size(39, 20);
             this.numBytes.TabIndex = 120;
             this.numBytes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tooltip.SetToolTip(this.numBytes, "The length of the address, this is usually between one and three bytes.");
             this.numBytes.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numBytes.ValueChanged += new System.EventHandler(this.numBytes_ValueChanged);
+            this.numBytes.Enter += new System.EventHandler(this.control_MouseEnter);
+            this.numBytes.Leave += new System.EventHandler(this.control_MouseLeave);
             // 
             // label31
             // 
@@ -781,21 +817,25 @@
             this.numParameterPos.Size = new System.Drawing.Size(39, 20);
             this.numParameterPos.TabIndex = 118;
             this.numParameterPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tooltip.SetToolTip(this.numParameterPos, "The position for the first byte of the parameter address. The address defines wha" +
+        "t value to change on the synth or device.");
             this.numParameterPos.Value = new decimal(new int[] {
-            15,
+            4,
             0,
             0,
             0});
             this.numParameterPos.ValueChanged += new System.EventHandler(this.sysex_ValueChanged);
+            this.numParameterPos.Enter += new System.EventHandler(this.control_MouseEnter);
+            this.numParameterPos.Leave += new System.EventHandler(this.control_MouseLeave);
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(9, 86);
+            this.label30.Location = new System.Drawing.Point(19, 86);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(95, 13);
+            this.label30.Size = new System.Drawing.Size(85, 13);
             this.label30.TabIndex = 117;
-            this.label30.Text = "Parameter Position";
+            this.label30.Text = "Address Position";
             // 
             // lblChannel
             // 
@@ -870,12 +910,16 @@
             this.numMsbPos.Size = new System.Drawing.Size(39, 20);
             this.numMsbPos.TabIndex = 112;
             this.numMsbPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tooltip.SetToolTip(this.numMsbPos, "The position for the MSB part (most significant byte) of the value if the value i" +
+        "s 14-bit.");
             this.numMsbPos.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
             this.numMsbPos.ValueChanged += new System.EventHandler(this.sysex_ValueChanged);
+            this.numMsbPos.Enter += new System.EventHandler(this.control_MouseEnter);
+            this.numMsbPos.Leave += new System.EventHandler(this.control_MouseLeave);
             // 
             // label21
             // 
@@ -904,12 +948,16 @@
             this.numLength.Size = new System.Drawing.Size(39, 20);
             this.numLength.TabIndex = 110;
             this.numLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tooltip.SetToolTip(this.numLength, "The length of the sysex message. The last byte of a sysex message is always the v" +
+        "alue \'F7\'");
             this.numLength.Value = new decimal(new int[] {
             17,
             0,
             0,
             0});
             this.numLength.ValueChanged += new System.EventHandler(this.sysex_ValueChanged);
+            this.numLength.Enter += new System.EventHandler(this.control_MouseEnter);
+            this.numLength.Leave += new System.EventHandler(this.control_MouseLeave);
             // 
             // label27
             // 
@@ -938,21 +986,25 @@
             this.numLsbPos.Size = new System.Drawing.Size(39, 20);
             this.numLsbPos.TabIndex = 108;
             this.numLsbPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tooltip.SetToolTip(this.numLsbPos, "The position for the value. If a 14-bit value is sent, then this defines the posi" +
+        "tion for the LSB part (least significant byte) of the value.");
             this.numLsbPos.Value = new decimal(new int[] {
-            16,
+            5,
             0,
             0,
             0});
             this.numLsbPos.ValueChanged += new System.EventHandler(this.sysex_ValueChanged);
+            this.numLsbPos.Enter += new System.EventHandler(this.control_MouseEnter);
+            this.numLsbPos.Leave += new System.EventHandler(this.control_MouseLeave);
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(7, 112);
+            this.label25.Location = new System.Drawing.Point(1, 112);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(97, 13);
+            this.label25.Size = new System.Drawing.Size(103, 13);
             this.label25.TabIndex = 107;
-            this.label25.Text = "Value LSB Position";
+            this.label25.Text = "Value (LSB) Position";
             // 
             // cmbChecksum
             // 
@@ -981,7 +1033,6 @@
             // txtSysex17
             // 
             this.txtSysex17.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSysex17.Enabled = false;
             this.txtSysex17.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSysex17.Location = new System.Drawing.Point(571, 23);
             this.txtSysex17.MaxLength = 2;
@@ -1147,19 +1198,6 @@
             this.txtSysex5.Text = "00";
             this.txtSysex5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSysex5.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
-            // 
-            // txtSysex4
-            // 
-            this.txtSysex4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSysex4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex4.Location = new System.Drawing.Point(155, 23);
-            this.txtSysex4.MaxLength = 2;
-            this.txtSysex4.Name = "txtSysex4";
-            this.txtSysex4.Size = new System.Drawing.Size(26, 20);
-            this.txtSysex4.TabIndex = 91;
-            this.txtSysex4.Text = "00";
-            this.txtSysex4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSysex4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
             // 
             // label23
             // 
@@ -2025,6 +2063,11 @@
             0,
             0,
             0});
+            this.numDisplayOffset.Minimum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            -2147483648});
             this.numDisplayOffset.Name = "numDisplayOffset";
             this.numDisplayOffset.Size = new System.Drawing.Size(57, 20);
             this.numDisplayOffset.TabIndex = 139;
@@ -2190,12 +2233,37 @@
             this.lblPresetName.TabIndex = 148;
             this.lblPresetName.Text = "Name";
             // 
+            // grpHelp
+            // 
+            this.grpHelp.Controls.Add(this.txtHelp);
+            this.grpHelp.Enabled = false;
+            this.grpHelp.Location = new System.Drawing.Point(382, 446);
+            this.grpHelp.Name = "grpHelp";
+            this.grpHelp.Size = new System.Drawing.Size(442, 80);
+            this.grpHelp.TabIndex = 149;
+            this.grpHelp.TabStop = false;
+            this.grpHelp.Text = "Help";
+            // 
+            // txtHelp
+            // 
+            this.txtHelp.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHelp.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtHelp.Enabled = false;
+            this.txtHelp.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtHelp.Location = new System.Drawing.Point(9, 19);
+            this.txtHelp.Multiline = true;
+            this.txtHelp.Name = "txtHelp";
+            this.txtHelp.ReadOnly = true;
+            this.txtHelp.Size = new System.Drawing.Size(427, 54);
+            this.txtHelp.TabIndex = 0;
+            // 
             // frmPreset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(996, 537);
+            this.Controls.Add(this.grpHelp);
             this.Controls.Add(this.lblPresetName);
             this.Controls.Add(this.lblPreset);
             this.Controls.Add(this.btnClose);
@@ -2210,7 +2278,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmPreset";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "SynthControl Editor - ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPreset_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -2241,6 +2309,8 @@
             this.grpMainSettings.ResumeLayout(false);
             this.grpMainSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStepSize)).EndInit();
+            this.grpHelp.ResumeLayout(false);
+            this.grpHelp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2391,6 +2461,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPasteParameter;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPasteParameterAll;
         private System.Windows.Forms.Button btnDuplicatePage;
+        private System.Windows.Forms.GroupBox grpHelp;
+        private System.Windows.Forms.TextBox txtHelp;
     }
 }
 

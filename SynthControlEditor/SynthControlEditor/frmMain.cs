@@ -16,6 +16,8 @@ namespace SynthControlEditor
         {
             InitializeComponent();
 
+            this.Location = SynthControlEditor.Properties.Settings.Default.FormMainPosition;
+
             txtFolder.Text = SynthControlEditor.Properties.Settings.Default.FolderMain;
             folderBrowserDialog.SelectedPath = txtFolder.Text;
             GetPresets();
@@ -40,6 +42,8 @@ namespace SynthControlEditor
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             SynthControlEditor.Properties.Settings.Default.FolderMain = txtFolder.Text;
+            SynthControlEditor.Properties.Settings.Default.FormMainPosition = this.Location;
+
             SynthControlEditor.Properties.Settings.Default.Save();
         }
 
@@ -266,6 +270,15 @@ namespace SynthControlEditor
         private void btnQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnSysex_Click(object sender, EventArgs e)
+        {
+            if (lstPresets.SelectedItems.Count > 0)
+            {
+                frmSysex frm = new frmSysex( Path.Combine(txtFolder.Text, lstPresets.SelectedItems[0].SubItems[1].Text.Trim().Replace("\0","") )  );
+                frm.ShowDialog();
+            }
         }
     }
 }
