@@ -79,7 +79,8 @@ namespace SynthControlEditor
                 bytes[valueMsbPosition - 1] = Parameter.MSB7bit(value);
 
             // Calculate and insert checksum
-            bytes[length - 2] = calcChecksum(bytes, (Checksum)checksum);
+            if(checksum != (byte)Checksum.NONE)
+                bytes[length - 2] = calcChecksum(bytes, (Checksum)checksum);
 
             return bytes;
         }

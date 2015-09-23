@@ -29,7 +29,6 @@ E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\Sy
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.pdb
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\SynthControlEditor.exe
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\SynthControlEditor.pdb
-E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\ResolveAssemblyReference.cache
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmDisplay.resources
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmPageName.resources
 E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmMain.resources
@@ -60,3 +59,10 @@ C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\Sy
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Sanford.Multimedia.Midi.dll
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Sanford.Multimedia.Midi.xml
 C:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Knob.dll
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Knob.dll
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Sanford.Multimedia.Midi.dll
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\bin\Debug\Sanford.Multimedia.Midi.xml
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControl Editor.csprojResolveAssemblyReference.cache
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmSysexName.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmSysex.resources
+E:\GitHub\SynthControl-Editor\SynthControlEditor\SynthControlEditor\obj\Debug\SynthControlEditor.frmDescriptor.resources

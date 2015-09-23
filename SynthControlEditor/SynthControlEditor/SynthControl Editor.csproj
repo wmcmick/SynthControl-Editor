@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Descriptor.cs" />
     <Compile Include="frmSysexName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +100,12 @@
     </Compile>
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDescriptor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDescriptor.Designer.cs">
+      <DependentUpon>frmDescriptor.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTranslatorDescription.cs">
       <SubType>Form</SubType>
@@ -159,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDescriptor.resx">
+      <DependentUpon>frmDescriptor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTranslatorDescription.resx">
       <DependentUpon>frmTranslatorDescription.cs</DependentUpon>

@@ -21,7 +21,6 @@ namespace SynthControlEditor
         public frmTranslators(string sFolder, int iTranslatorNumber, string sTranslatorName)
         {
             folder = sFolder;
-            
 
             InitializeComponent();
 
@@ -56,26 +55,7 @@ namespace SynthControlEditor
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (lstTranslator.Items.Count < translator.maxLength)
-            {
-                frmTranslatorDescription frm = new frmTranslatorDescription("");
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    ListViewItem lvi = new ListViewItem();
-                    ListViewItem.ListViewSubItem lviSub = new ListViewItem.ListViewSubItem();
-                    lviSub.Text = frm.name;
 
-                    lvi.Text = lstTranslator.Items.Count.ToString();
-
-                    lvi.SubItems.Add(lviSub);
-                    //lvi.page.name = frm.name;
-                    lstTranslator.Items.Add(lvi);
-                    translatorChanged = true;
-                    //UpdateValues();
-                }
-            }
-            else
-                MessageBox.Show("Maximum lines of translator reached!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -111,20 +91,7 @@ namespace SynthControlEditor
 
         private void btnMoveUp_Click(object sender, EventArgs e)
         {
-            if (lstTranslator.SelectedItems.Count > 0)
-            {
-                int selectedIndex = lstTranslator.SelectedIndices[0];
-                if (selectedIndex > 0)
-                {
-                    ListViewItem lvi = lstTranslator.Items[selectedIndex];
-                    lstTranslator.Items.RemoveAt(selectedIndex);
-                    lstTranslator.Items.Insert(selectedIndex - 1, lvi);
-                }
-                translatorChanged = true;
-                UpdateValues();
-            }
-            else
-                MessageBox.Show("No line selected!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
 
         private void lstTranslator_DoubleClick(object sender, EventArgs e)
@@ -134,31 +101,12 @@ namespace SynthControlEditor
 
         private void btnMoveDown_Click(object sender, EventArgs e)
         {
-            if (lstTranslator.SelectedItems.Count > 0)
-            {
-                int selectedIndex = lstTranslator.SelectedIndices[0];
-                if (selectedIndex < lstTranslator.Items.Count - 1)
-                {
-                    ListViewItem lvi = lstTranslator.Items[selectedIndex];
-                    lstTranslator.Items.RemoveAt(selectedIndex);
-                    lstTranslator.Items.Insert(selectedIndex + 1, lvi);
-                }
-                translatorChanged = true;
-                UpdateValues();
-            }
-            else
-                MessageBox.Show("No preset selected!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (lstTranslator.SelectedItems.Count > 0)
-            {
-                lstTranslator.Items.RemoveAt(lstTranslator.SelectedIndices[0]);
-                translatorChanged = true;
-            }
-            else
-                MessageBox.Show("No line selected!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)

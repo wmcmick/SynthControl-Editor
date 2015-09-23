@@ -150,15 +150,15 @@
             this.txtHeader13 = new System.Windows.Forms.TextBox();
             this.txtHeader15 = new System.Windows.Forms.TextBox();
             this.txtHeader14 = new System.Windows.Forms.TextBox();
-            this.cmbTranslators = new System.Windows.Forms.ComboBox();
+            this.cmbDescriptors = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.grpTranslator = new System.Windows.Forms.GroupBox();
-            this.btnEditTranslator = new System.Windows.Forms.Button();
+            this.grpDescriptors = new System.Windows.Forms.GroupBox();
+            this.btnEditDescriptor = new System.Windows.Forms.Button();
             this.chkUseHighestExceeding = new System.Windows.Forms.CheckBox();
-            this.numTranslatorOffset = new System.Windows.Forms.NumericUpDown();
+            this.numDescriptorOffset = new System.Windows.Forms.NumericUpDown();
             this.numMin = new System.Windows.Forms.NumericUpDown();
             this.numMax = new System.Windows.Forms.NumericUpDown();
             this.numDisplayOffset = new System.Windows.Forms.NumericUpDown();
@@ -188,8 +188,8 @@
             this.pnlDisplay.SuspendLayout();
             this.contextMenuStripParameter.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.grpTranslator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numTranslatorOffset)).BeginInit();
+            this.grpDescriptors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDescriptorOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDisplayOffset)).BeginInit();
@@ -1966,38 +1966,18 @@
             this.txtHeader14.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
             this.txtHeader14.Enter += new System.EventHandler(this.txtHeader_Enter);
             // 
-            // cmbTranslators
+            // cmbDescriptors
             // 
-            this.cmbTranslators.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTranslators.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTranslators.FormattingEnabled = true;
-            this.cmbTranslators.Items.AddRange(new object[] {
-            "None",
-            "ASCII",
-            "Notes",
-            "Notes (quarters)",
-            "*Translator 1",
-            "*Translator 2",
-            "*Translator 3",
-            "*Translator 4",
-            "*Translator 5",
-            "*Translator 6",
-            "*Translator 7",
-            "*Translator 8",
-            "*Translator 9",
-            "*Translator 10",
-            "*Translator 11",
-            "*Translator 12",
-            "*Translator 13",
-            "*Translator 14",
-            "*Translator 15"});
-            this.cmbTranslators.Location = new System.Drawing.Point(6, 26);
-            this.cmbTranslators.Name = "cmbTranslators";
-            this.cmbTranslators.Size = new System.Drawing.Size(201, 22);
-            this.cmbTranslators.TabIndex = 130;
-            this.cmbTranslators.SelectedIndexChanged += new System.EventHandler(this.txtParameter_TextChanged);
-            this.cmbTranslators.MouseEnter += new System.EventHandler(this.control_MouseEnter);
-            this.cmbTranslators.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            this.cmbDescriptors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDescriptors.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDescriptors.FormattingEnabled = true;
+            this.cmbDescriptors.Location = new System.Drawing.Point(6, 26);
+            this.cmbDescriptors.Name = "cmbDescriptors";
+            this.cmbDescriptors.Size = new System.Drawing.Size(201, 22);
+            this.cmbDescriptors.TabIndex = 130;
+            this.cmbDescriptors.SelectedIndexChanged += new System.EventHandler(this.cmbDescriptors_SelectedIndexChanged);
+            this.cmbDescriptors.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.cmbDescriptors.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // label1
             // 
@@ -2031,32 +2011,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pages";
             // 
-            // grpTranslator
+            // grpDescriptors
             // 
-            this.grpTranslator.Controls.Add(this.btnEditTranslator);
-            this.grpTranslator.Controls.Add(this.chkUseHighestExceeding);
-            this.grpTranslator.Controls.Add(this.numTranslatorOffset);
-            this.grpTranslator.Controls.Add(this.cmbTranslators);
-            this.grpTranslator.Controls.Add(this.label1);
-            this.grpTranslator.Enabled = false;
-            this.grpTranslator.Location = new System.Drawing.Point(376, 202);
-            this.grpTranslator.Name = "grpTranslator";
-            this.grpTranslator.Size = new System.Drawing.Size(608, 61);
-            this.grpTranslator.TabIndex = 136;
-            this.grpTranslator.TabStop = false;
-            this.grpTranslator.Text = "Translator";
+            this.grpDescriptors.Controls.Add(this.btnEditDescriptor);
+            this.grpDescriptors.Controls.Add(this.chkUseHighestExceeding);
+            this.grpDescriptors.Controls.Add(this.numDescriptorOffset);
+            this.grpDescriptors.Controls.Add(this.cmbDescriptors);
+            this.grpDescriptors.Controls.Add(this.label1);
+            this.grpDescriptors.Enabled = false;
+            this.grpDescriptors.Location = new System.Drawing.Point(376, 202);
+            this.grpDescriptors.Name = "grpDescriptors";
+            this.grpDescriptors.Size = new System.Drawing.Size(608, 61);
+            this.grpDescriptors.TabIndex = 136;
+            this.grpDescriptors.TabStop = false;
+            this.grpDescriptors.Text = "Descriptors";
             // 
-            // btnEditTranslator
+            // btnEditDescriptor
             // 
-            this.btnEditTranslator.Location = new System.Drawing.Point(213, 24);
-            this.btnEditTranslator.Name = "btnEditTranslator";
-            this.btnEditTranslator.Size = new System.Drawing.Size(74, 23);
-            this.btnEditTranslator.TabIndex = 141;
-            this.btnEditTranslator.Text = "Edit";
-            this.btnEditTranslator.UseVisualStyleBackColor = true;
-            this.btnEditTranslator.Click += new System.EventHandler(this.btnEditTranslator_Click);
-            this.btnEditTranslator.MouseEnter += new System.EventHandler(this.control_MouseEnter);
-            this.btnEditTranslator.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            this.btnEditDescriptor.Location = new System.Drawing.Point(213, 24);
+            this.btnEditDescriptor.Name = "btnEditDescriptor";
+            this.btnEditDescriptor.Size = new System.Drawing.Size(74, 23);
+            this.btnEditDescriptor.TabIndex = 141;
+            this.btnEditDescriptor.Text = "Edit";
+            this.btnEditDescriptor.UseVisualStyleBackColor = true;
+            this.btnEditDescriptor.Click += new System.EventHandler(this.btnEditTranslator_Click);
+            this.btnEditDescriptor.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.btnEditDescriptor.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // chkUseHighestExceeding
             // 
@@ -2071,17 +2051,17 @@
             this.chkUseHighestExceeding.MouseEnter += new System.EventHandler(this.control_MouseEnter);
             this.chkUseHighestExceeding.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
-            // numTranslatorOffset
+            // numDescriptorOffset
             // 
-            this.numTranslatorOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numTranslatorOffset.Location = new System.Drawing.Point(334, 27);
-            this.numTranslatorOffset.Name = "numTranslatorOffset";
-            this.numTranslatorOffset.Size = new System.Drawing.Size(57, 20);
-            this.numTranslatorOffset.TabIndex = 139;
-            this.numTranslatorOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numTranslatorOffset.ValueChanged += new System.EventHandler(this.txtParameter_TextChanged);
-            this.numTranslatorOffset.Enter += new System.EventHandler(this.control_MouseEnter);
-            this.numTranslatorOffset.Leave += new System.EventHandler(this.control_MouseLeave);
+            this.numDescriptorOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDescriptorOffset.Location = new System.Drawing.Point(334, 27);
+            this.numDescriptorOffset.Name = "numDescriptorOffset";
+            this.numDescriptorOffset.Size = new System.Drawing.Size(57, 20);
+            this.numDescriptorOffset.TabIndex = 139;
+            this.numDescriptorOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numDescriptorOffset.ValueChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.numDescriptorOffset.Enter += new System.EventHandler(this.control_MouseEnter);
+            this.numDescriptorOffset.Leave += new System.EventHandler(this.control_MouseLeave);
             // 
             // numMin
             // 
@@ -2360,7 +2340,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSaveAndClose);
             this.Controls.Add(this.grpMainSettings);
-            this.Controls.Add(this.grpTranslator);
+            this.Controls.Add(this.grpDescriptors);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lstPages);
             this.Controls.Add(this.pnlDisplay);
@@ -2387,9 +2367,9 @@
             this.pnlDisplay.PerformLayout();
             this.contextMenuStripParameter.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.grpTranslator.ResumeLayout(false);
-            this.grpTranslator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numTranslatorOffset)).EndInit();
+            this.grpDescriptors.ResumeLayout(false);
+            this.grpDescriptors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDescriptorOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDisplayOffset)).EndInit();
@@ -2507,7 +2487,7 @@
         private System.Windows.Forms.TextBox txtHeader13;
         private System.Windows.Forms.TextBox txtHeader15;
         private System.Windows.Forms.TextBox txtHeader14;
-        private System.Windows.Forms.ComboBox cmbTranslators;
+        private System.Windows.Forms.ComboBox cmbDescriptors;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
         private System.Windows.Forms.SaveFileDialog dlgSave;
@@ -2517,7 +2497,7 @@
         private System.Windows.Forms.TextBox txtPageName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chkLayersChannels;
-        private System.Windows.Forms.GroupBox grpTranslator;
+        private System.Windows.Forms.GroupBox grpDescriptors;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -2526,7 +2506,7 @@
         private System.Windows.Forms.Label lblChannelType;
         private System.Windows.Forms.NumericUpDown numMin;
         private System.Windows.Forms.NumericUpDown numMax;
-        private System.Windows.Forms.NumericUpDown numTranslatorOffset;
+        private System.Windows.Forms.NumericUpDown numDescriptorOffset;
         private System.Windows.Forms.NumericUpDown numDisplayOffset;
         private System.Windows.Forms.NumericUpDown numNumber1;
         private System.Windows.Forms.NumericUpDown numNumber2;
@@ -2541,7 +2521,7 @@
         private System.Windows.Forms.GroupBox grpMainSettings;
         private System.Windows.Forms.NumericUpDown numStepSize;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnEditTranslator;
+        private System.Windows.Forms.Button btnEditDescriptor;
         private System.Windows.Forms.Button btnSaveAndClose;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblPreset;
