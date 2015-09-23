@@ -199,10 +199,12 @@ namespace SynthControlEditor
                     }
                     else if (oPage.parameters[index].type == (byte)Parameter.Types.SYSEX)
                     {
-                        byte[] sysexMessage = new byte[] {0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x00, 0x7F, 0x00, 0x41, 0xF7};
+                        //byte[] sysexMessage = new byte[] {0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x00, 0x7F, 0x00, 0x41, 0xF7};
+                        byte[] sysexMessage = oPage.parameters[index].sysex.GetMessage((ushort)val, 6, 1);
 
                         SysExMessage sysex = new SysExMessage(sysexMessage);
                         midiOut.Send(sysex);
+
                     }
                    
                 }

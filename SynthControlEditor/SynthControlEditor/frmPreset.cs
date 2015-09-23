@@ -1034,5 +1034,11 @@ namespace SynthControlEditor
             txtHelp.Text = "";
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //byte[] bytes = lviPageEdited.page.parameters[7].sysex.GetMessage();
+            MessageBox.Show( Parameter.ByteArrayToHexString( lviPageEdited.page.parameters[8].sysex.GetMessage(16383,6,1) ) );
+        }
+
     }
 }
