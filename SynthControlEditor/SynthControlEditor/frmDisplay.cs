@@ -93,13 +93,22 @@ namespace SynthControlEditor
             int index = Convert.ToInt32(knob.Text) - 1;
             int val = 0;
             int valShow = 0;
+            string desc = "";
 
             if (oPage.parameters[index].type != (byte)Parameter.Types.NONE)
             {
                 val = map(knob.Value, knob.Minimum, knob.Maximum, oPage.parameters[index].min, oPage.parameters[index].max);
                 valShow = val + oPage.parameters[index].displayOffset;
+                if (oPage.parameters[index].translator == (byte)Descriptor.Types.NONE)
+                    desc = "";
+                else if (oPage.parameters[index].translator == (byte)Descriptor.Types.ASCII)
+                    desc = ": " + Descriptor.GetAsciiChar(val, oPage.parameters[index].translatorOffset);
+                else if (oPage.parameters[index].translator == (byte)Descriptor.Types.SEMITONES)
+                    desc = ": " + Descriptor.GetSemitone(val, oPage.parameters[index].translatorOffset);
+                else if (oPage.parameters[index].translator == (byte)Descriptor.Types.QUARTERTONES)
+                    desc = ": " + Descriptor.GetQuartertone(val, oPage.parameters[index].translatorOffset);
                 
-                txtDisplayMain.Text = mainDisplay + oPage.parameters[index].nameLong + Environment.NewLine + valShow.ToString().PadLeft(5);
+                txtDisplayMain.Text = mainDisplay + oPage.parameters[index].nameLong + Environment.NewLine + valShow.ToString().PadLeft(5) + desc;
 
                 if (midiOut != null)
                 {

@@ -15,7 +15,7 @@ namespace SynthControlEditor
 {
     public partial class frmPreset : Form
     {
-        public const int TRANSLATOR_OFFSET = 3;
+        public const int DESCRIPTOR_OFFSET = 4;
 
         public const int TYPE_NONE = 0;
         public const int TYPE_CC7BIT = 1;
@@ -58,6 +58,8 @@ namespace SynthControlEditor
         private bool presetChanged;
 
         private Parameter clipboardParameter;
+
+        private bool enableDescriptorIndexChanged = true;
 
         //private Knob knob = null;
         
@@ -126,16 +128,19 @@ namespace SynthControlEditor
             lSysex2.Add(txtSysex2_1);
             lSysex2.Add(txtSysex2_2);
             lSysex2.Add(txtSysex2_3);
+            lSysex2.Add(txtSysex2_4);
 
             lSysex3 = new List<TextBox>();
             lSysex3.Add(txtSysex3_1);
             lSysex3.Add(txtSysex3_2);
             lSysex3.Add(txtSysex3_3);
+            lSysex3.Add(txtSysex3_4);
 
             lSysex4 = new List<TextBox>();
             lSysex4.Add(txtSysex4_1);
             lSysex4.Add(txtSysex4_2);
             lSysex4.Add(txtSysex4_3);
+            lSysex4.Add(txtSysex4_4);
 
             lSysexLayers = new List<List<TextBox>>();
             lSysexLayers.Add(lSysex2);
@@ -213,6 +218,7 @@ namespace SynthControlEditor
 
         public void UpdateDescriptors()
         {
+            enableDescriptorIndexChanged = false;
             int i;
             int selected = cmbDescriptors.SelectedIndex;
 
@@ -231,6 +237,8 @@ namespace SynthControlEditor
 
             if (cmbDescriptors.Items.Count > selected)
                 cmbDescriptors.SelectedIndex = selected;
+
+            enableDescriptorIndexChanged = true;
         }
 
         public void UpdateRanges()
@@ -341,7 +349,7 @@ namespace SynthControlEditor
                 }
                 else
                 {
-                    for (int j = Convert.ToInt16(numBytes.Value); j <= 2; j++)
+                    for (int j = Convert.ToInt16(numBytes.Value); j < 4; j++)
                     {
                         lSysexLayers[i][j].Enabled = false;
                         lSysexLayers[i][j].BackColor = SystemColors.Window;
@@ -584,11 +592,11 @@ namespace SynthControlEditor
             numMsbPos.Value = lviPageEdited.page.parameters[parameterNumber].sysex.valueMsbPosition;
             for (int i = 0; i < 17; i++)
                 lSysex[i].Text = lviPageEdited.page.parameters[parameterNumber].sysex.message[i];
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
                 lSysex2[i].Text = lviPageEdited.page.parameters[parameterNumber].sysex.message_l2[i];
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
                 lSysex3[i].Text = lviPageEdited.page.parameters[parameterNumber].sysex.message_l3[i];
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
                 lSysex4[i].Text = lviPageEdited.page.parameters[parameterNumber].sysex.message_l4[i];
 
             // Update GUI
@@ -824,30 +832,6 @@ namespace SynthControlEditor
                 MessageBox.Show("No preset selected!", "SynthControl Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        private void btnEditTranslator_Click(object sender, EventArgs e)
-        {
-            if (cmbDescriptors.SelectedIndex > TRANSLATOR_OFFSET)
-            {
-                if (descriptorForm == null)
-                {
-                    descriptorForm = new frmDescriptor(this, Path.Combine(rootPath, preset.folderName), this.preset.descriptors[cmbDescriptors.SelectedIndex - TRANSLATOR_OFFSET]);
-                    descriptorForm.Show();
-                }
-                /*if (frm.changesMade)
-                {
-                    cmbDescriptors.Items[cmbDescriptors.SelectedIndex] = frm.translator.name;
-                    presetChanged = true;
-                }*/
-                /*frmTranslators frm = new frmTranslators(Path.Combine(rootPath, preset.folderName), cmbTranslators.SelectedIndex - TRANSLATOR_OFFSET, cmbTranslators.SelectedItem.ToString());
-                frm.ShowDialog();
-                if (frm.changesMade)
-                {
-                    cmbTranslators.Items[cmbTranslators.SelectedIndex] = frm.translator.name;
-                    presetChanged = true;
-                }*/
-            }
-        }
-
         private void txtPageName_TextChanged(object sender, EventArgs e)
         {
             if (!readingParameter)
@@ -884,14 +868,14 @@ namespace SynthControlEditor
         {
             if (displayForm != null)
             {
-                displayForm.Hide();
                 displayForm.Close();
+                displayForm.Dispose();
             }
 
             if (descriptorForm != null)
             {
-                descriptorForm.Hide();
                 descriptorForm.Close();
+                descriptorForm.Dispose();
             }
 
             SynthControlEditor.Properties.Settings.Default.FormPresetPosition = this.Location;
@@ -1079,33 +1063,37 @@ namespace SynthControlEditor
             txtHelp.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //byte[] bytes = lviPageEdited.page.parameters[7].sysex.GetMessage();
-            MessageBox.Show( Parameter.ByteArrayToHexString( lviPageEdited.page.parameters[8].sysex.GetMessage(120,6,1) ) );
-        }
-
         private void cmbDescriptors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbDescriptors.SelectedIndex == cmbDescriptors.Items.Count - 1)
+            if (!enableDescriptorIndexChanged) return;
+
+            if (cmbDescriptors.SelectedIndex >= DESCRIPTOR_OFFSET)
             {
-                string descriptorName = "Descriptor " + (cmbDescriptors.SelectedIndex - TRANSLATOR_OFFSET).ToString();
+                Descriptor descr = null;
 
-                BeginInvoke(new Action(() => cmbDescriptors.Items[cmbDescriptors.SelectedIndex] = descriptorName));
-                
-                cmbDescriptors.Items.Add("*Add new");
+                if (cmbDescriptors.SelectedIndex == cmbDescriptors.Items.Count - 1)
+                {
+                    string descriptorName = "Descriptor " + (cmbDescriptors.SelectedIndex - DESCRIPTOR_OFFSET + 1).ToString();
 
-                Descriptor descr = new Descriptor();
-                descr.name = descriptorName;
-                this.preset.descriptors.Add(descr);
+                    BeginInvoke(new Action(() => cmbDescriptors.Items[cmbDescriptors.SelectedIndex] = descriptorName));
+
+                    cmbDescriptors.Items.Add("*Add new");
+
+                    descr = new Descriptor();
+                    descr.name = descriptorName;
+                    this.preset.descriptors.Add(descr);
+                }
+                else
+                {
+                    descr = this.preset.descriptors[cmbDescriptors.SelectedIndex - DESCRIPTOR_OFFSET];
+                }
 
                 if (descriptorForm == null)
-                {
                     descriptorForm = new frmDescriptor(this, Path.Combine(rootPath, preset.folderName), descr);
-                    descriptorForm.Show();
-                }
+                else
+                    descriptorForm.EditDescriptor(descr);
+                descriptorForm.Show();
             }
-
 
             parameterTextChanged();
         }

@@ -156,7 +156,6 @@
             this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpDescriptors = new System.Windows.Forms.GroupBox();
-            this.btnEditDescriptor = new System.Windows.Forms.Button();
             this.chkUseHighestExceeding = new System.Windows.Forms.CheckBox();
             this.numDescriptorOffset = new System.Windows.Forms.NumericUpDown();
             this.numMin = new System.Windows.Forms.NumericUpDown();
@@ -175,7 +174,9 @@
             this.lblPresetName = new System.Windows.Forms.Label();
             this.grpHelp = new System.Windows.Forms.GroupBox();
             this.txtHelp = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtSysex2_4 = new System.Windows.Forms.TextBox();
+            this.txtSysex3_4 = new System.Windows.Forms.TextBox();
+            this.txtSysex4_4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numBytes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numParameterPos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMsbPos)).BeginInit();
@@ -536,7 +537,7 @@
             this.numBytes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numBytes.Location = new System.Drawing.Point(155, 84);
             this.numBytes.Maximum = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -686,6 +687,9 @@
             // 
             // grpSysex
             // 
+            this.grpSysex.Controls.Add(this.txtSysex4_4);
+            this.grpSysex.Controls.Add(this.txtSysex3_4);
+            this.grpSysex.Controls.Add(this.txtSysex2_4);
             this.grpSysex.Controls.Add(this.numChannelType);
             this.grpSysex.Controls.Add(this.lblChannelType);
             this.grpSysex.Controls.Add(this.lblSysexLayer4);
@@ -746,7 +750,7 @@
             // 
             this.numChannelType.BackColor = System.Drawing.SystemColors.Window;
             this.numChannelType.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numChannelType.Location = new System.Drawing.Point(344, 84);
+            this.numChannelType.Location = new System.Drawing.Point(328, 84);
             this.numChannelType.Maximum = new decimal(new int[] {
             1,
             0,
@@ -763,7 +767,7 @@
             // lblChannelType
             // 
             this.lblChannelType.AutoSize = true;
-            this.lblChannelType.Location = new System.Drawing.Point(273, 86);
+            this.lblChannelType.Location = new System.Drawing.Point(257, 86);
             this.lblChannelType.Name = "lblChannelType";
             this.lblChannelType.Size = new System.Drawing.Size(65, 13);
             this.lblChannelType.TabIndex = 133;
@@ -772,7 +776,7 @@
             // lblSysexLayer4
             // 
             this.lblSysexLayer4.AutoSize = true;
-            this.lblSysexLayer4.Location = new System.Drawing.Point(459, 112);
+            this.lblSysexLayer4.Location = new System.Drawing.Point(427, 112);
             this.lblSysexLayer4.Name = "lblSysexLayer4";
             this.lblSysexLayer4.Size = new System.Drawing.Size(42, 13);
             this.lblSysexLayer4.TabIndex = 132;
@@ -781,7 +785,7 @@
             // lblSysexLayer3
             // 
             this.lblSysexLayer3.AutoSize = true;
-            this.lblSysexLayer3.Location = new System.Drawing.Point(459, 86);
+            this.lblSysexLayer3.Location = new System.Drawing.Point(427, 86);
             this.lblSysexLayer3.Name = "lblSysexLayer3";
             this.lblSysexLayer3.Size = new System.Drawing.Size(42, 13);
             this.lblSysexLayer3.TabIndex = 131;
@@ -790,7 +794,7 @@
             // lblSysexLayer2
             // 
             this.lblSysexLayer2.AutoSize = true;
-            this.lblSysexLayer2.Location = new System.Drawing.Point(459, 60);
+            this.lblSysexLayer2.Location = new System.Drawing.Point(427, 60);
             this.lblSysexLayer2.Name = "lblSysexLayer2";
             this.lblSysexLayer2.Size = new System.Drawing.Size(42, 13);
             this.lblSysexLayer2.TabIndex = 130;
@@ -800,7 +804,7 @@
             // 
             this.txtSysex4_3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex4_3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex4_3.Location = new System.Drawing.Point(571, 109);
+            this.txtSysex4_3.Location = new System.Drawing.Point(539, 109);
             this.txtSysex4_3.MaxLength = 2;
             this.txtSysex4_3.Name = "txtSysex4_3";
             this.txtSysex4_3.Size = new System.Drawing.Size(26, 20);
@@ -815,7 +819,7 @@
             // 
             this.txtSysex4_2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex4_2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex4_2.Location = new System.Drawing.Point(539, 109);
+            this.txtSysex4_2.Location = new System.Drawing.Point(507, 109);
             this.txtSysex4_2.MaxLength = 2;
             this.txtSysex4_2.Name = "txtSysex4_2";
             this.txtSysex4_2.Size = new System.Drawing.Size(26, 20);
@@ -830,7 +834,7 @@
             // 
             this.txtSysex4_1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex4_1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex4_1.Location = new System.Drawing.Point(507, 109);
+            this.txtSysex4_1.Location = new System.Drawing.Point(475, 109);
             this.txtSysex4_1.MaxLength = 2;
             this.txtSysex4_1.Name = "txtSysex4_1";
             this.txtSysex4_1.Size = new System.Drawing.Size(26, 20);
@@ -845,7 +849,7 @@
             // 
             this.txtSysex3_3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex3_3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex3_3.Location = new System.Drawing.Point(571, 83);
+            this.txtSysex3_3.Location = new System.Drawing.Point(539, 83);
             this.txtSysex3_3.MaxLength = 2;
             this.txtSysex3_3.Name = "txtSysex3_3";
             this.txtSysex3_3.Size = new System.Drawing.Size(26, 20);
@@ -860,7 +864,7 @@
             // 
             this.txtSysex3_2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex3_2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex3_2.Location = new System.Drawing.Point(539, 83);
+            this.txtSysex3_2.Location = new System.Drawing.Point(507, 83);
             this.txtSysex3_2.MaxLength = 2;
             this.txtSysex3_2.Name = "txtSysex3_2";
             this.txtSysex3_2.Size = new System.Drawing.Size(26, 20);
@@ -875,7 +879,7 @@
             // 
             this.txtSysex3_1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex3_1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex3_1.Location = new System.Drawing.Point(507, 83);
+            this.txtSysex3_1.Location = new System.Drawing.Point(475, 83);
             this.txtSysex3_1.MaxLength = 2;
             this.txtSysex3_1.Name = "txtSysex3_1";
             this.txtSysex3_1.Size = new System.Drawing.Size(26, 20);
@@ -890,7 +894,7 @@
             // 
             this.txtSysex2_3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex2_3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex2_3.Location = new System.Drawing.Point(571, 57);
+            this.txtSysex2_3.Location = new System.Drawing.Point(539, 57);
             this.txtSysex2_3.MaxLength = 2;
             this.txtSysex2_3.Name = "txtSysex2_3";
             this.txtSysex2_3.Size = new System.Drawing.Size(26, 20);
@@ -905,7 +909,7 @@
             // 
             this.txtSysex2_2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex2_2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex2_2.Location = new System.Drawing.Point(539, 57);
+            this.txtSysex2_2.Location = new System.Drawing.Point(507, 57);
             this.txtSysex2_2.MaxLength = 2;
             this.txtSysex2_2.Name = "txtSysex2_2";
             this.txtSysex2_2.Size = new System.Drawing.Size(26, 20);
@@ -920,7 +924,7 @@
             // 
             this.txtSysex2_1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSysex2_1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex2_1.Location = new System.Drawing.Point(507, 57);
+            this.txtSysex2_1.Location = new System.Drawing.Point(475, 57);
             this.txtSysex2_1.MaxLength = 2;
             this.txtSysex2_1.Name = "txtSysex2_1";
             this.txtSysex2_1.Size = new System.Drawing.Size(26, 20);
@@ -934,7 +938,8 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(200, 86);
+            this.label31.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label31.Location = new System.Drawing.Point(196, 87);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(33, 13);
             this.label31.TabIndex = 119;
@@ -953,7 +958,7 @@
             // 
             this.lblChannel.AutoSize = true;
             this.lblChannel.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.lblChannel.Location = new System.Drawing.Point(389, 60);
+            this.lblChannel.Location = new System.Drawing.Point(369, 61);
             this.lblChannel.Name = "lblChannel";
             this.lblChannel.Size = new System.Drawing.Size(48, 13);
             this.lblChannel.TabIndex = 116;
@@ -963,7 +968,7 @@
             // 
             this.lblMsb.AutoSize = true;
             this.lblMsb.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.lblMsb.Location = new System.Drawing.Point(155, 138);
+            this.lblMsb.Location = new System.Drawing.Point(151, 139);
             this.lblMsb.Name = "lblMsb";
             this.lblMsb.Size = new System.Drawing.Size(48, 13);
             this.lblMsb.TabIndex = 115;
@@ -973,7 +978,7 @@
             // 
             this.numChannel.BackColor = System.Drawing.SystemColors.Window;
             this.numChannel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numChannel.Location = new System.Drawing.Point(344, 58);
+            this.numChannel.Location = new System.Drawing.Point(328, 58);
             this.numChannel.Maximum = new decimal(new int[] {
             16,
             0,
@@ -1000,7 +1005,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(226, 60);
+            this.label29.Location = new System.Drawing.Point(210, 60);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(112, 13);
             this.label29.TabIndex = 113;
@@ -1043,7 +1048,7 @@
             "Roland",
             "Waldorf",
             "Waldorf \"dummy\""});
-            this.cmbChecksum.Location = new System.Drawing.Point(344, 109);
+            this.cmbChecksum.Location = new System.Drawing.Point(328, 109);
             this.cmbChecksum.Name = "cmbChecksum";
             this.cmbChecksum.Size = new System.Drawing.Size(80, 22);
             this.cmbChecksum.TabIndex = 106;
@@ -1054,7 +1059,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(281, 112);
+            this.label24.Location = new System.Drawing.Point(265, 112);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(57, 13);
             this.label24.TabIndex = 105;
@@ -2013,7 +2018,6 @@
             // 
             // grpDescriptors
             // 
-            this.grpDescriptors.Controls.Add(this.btnEditDescriptor);
             this.grpDescriptors.Controls.Add(this.chkUseHighestExceeding);
             this.grpDescriptors.Controls.Add(this.numDescriptorOffset);
             this.grpDescriptors.Controls.Add(this.cmbDescriptors);
@@ -2025,18 +2029,6 @@
             this.grpDescriptors.TabIndex = 136;
             this.grpDescriptors.TabStop = false;
             this.grpDescriptors.Text = "Descriptors";
-            // 
-            // btnEditDescriptor
-            // 
-            this.btnEditDescriptor.Location = new System.Drawing.Point(213, 24);
-            this.btnEditDescriptor.Name = "btnEditDescriptor";
-            this.btnEditDescriptor.Size = new System.Drawing.Size(74, 23);
-            this.btnEditDescriptor.TabIndex = 141;
-            this.btnEditDescriptor.Text = "Edit";
-            this.btnEditDescriptor.UseVisualStyleBackColor = true;
-            this.btnEditDescriptor.Click += new System.EventHandler(this.btnEditTranslator_Click);
-            this.btnEditDescriptor.MouseEnter += new System.EventHandler(this.control_MouseEnter);
-            this.btnEditDescriptor.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // chkUseHighestExceeding
             // 
@@ -2317,15 +2309,50 @@
             this.txtHelp.Size = new System.Drawing.Size(427, 54);
             this.txtHelp.TabIndex = 0;
             // 
-            // button1
+            // txtSysex2_4
             // 
-            this.button1.Location = new System.Drawing.Point(885, 460);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(62, 19);
-            this.button1.TabIndex = 150;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txtSysex2_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSysex2_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSysex2_4.Location = new System.Drawing.Point(571, 57);
+            this.txtSysex2_4.MaxLength = 2;
+            this.txtSysex2_4.Name = "txtSysex2_4";
+            this.txtSysex2_4.Size = new System.Drawing.Size(26, 20);
+            this.txtSysex2_4.TabIndex = 135;
+            this.txtSysex2_4.Text = "00";
+            this.txtSysex2_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSysex2_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex2_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex2_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            // 
+            // txtSysex3_4
+            // 
+            this.txtSysex3_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSysex3_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSysex3_4.Location = new System.Drawing.Point(571, 83);
+            this.txtSysex3_4.MaxLength = 2;
+            this.txtSysex3_4.Name = "txtSysex3_4";
+            this.txtSysex3_4.Size = new System.Drawing.Size(26, 20);
+            this.txtSysex3_4.TabIndex = 136;
+            this.txtSysex3_4.Text = "00";
+            this.txtSysex3_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSysex3_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex3_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex3_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            // 
+            // txtSysex4_4
+            // 
+            this.txtSysex4_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSysex4_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSysex4_4.Location = new System.Drawing.Point(571, 109);
+            this.txtSysex4_4.MaxLength = 2;
+            this.txtSysex4_4.Name = "txtSysex4_4";
+            this.txtSysex4_4.Size = new System.Drawing.Size(26, 20);
+            this.txtSysex4_4.TabIndex = 137;
+            this.txtSysex4_4.Text = "00";
+            this.txtSysex4_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSysex4_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex4_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex4_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // frmPreset
             // 
@@ -2333,7 +2360,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(996, 537);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.grpHelp);
             this.Controls.Add(this.lblPresetName);
             this.Controls.Add(this.lblPreset);
@@ -2521,7 +2547,6 @@
         private System.Windows.Forms.GroupBox grpMainSettings;
         private System.Windows.Forms.NumericUpDown numStepSize;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnEditDescriptor;
         private System.Windows.Forms.Button btnSaveAndClose;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblPreset;
@@ -2534,7 +2559,9 @@
         private System.Windows.Forms.Button btnDuplicatePage;
         private System.Windows.Forms.GroupBox grpHelp;
         private System.Windows.Forms.TextBox txtHelp;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtSysex4_4;
+        private System.Windows.Forms.TextBox txtSysex3_4;
+        private System.Windows.Forms.TextBox txtSysex2_4;
     }
 }
 

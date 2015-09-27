@@ -28,9 +28,9 @@ namespace SynthControlEditor
         public Sysex()
         {
             SetMessage("F0000000000000000000000000000000F7", 1);
-            SetMessage("000000", 2);
-            SetMessage("000000", 3);
-            SetMessage("000000", 4);
+            SetMessage("00000000", 2);
+            SetMessage("00000000", 3);
+            SetMessage("00000000", 4);
             length = (byte)message.Count;
             valueLsbPosition = 5;
             valueMsbPosition = 2;

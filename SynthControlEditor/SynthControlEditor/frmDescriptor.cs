@@ -22,7 +22,7 @@ namespace SynthControlEditor
             parentForm = parent;
             descriptor = descr;
             txtName.Text = descriptor.name;
-            txtLines.Text = descriptor.lines;
+            txtLines.Text = descriptor.GetLines();
             this.Location = SynthControlEditor.Properties.Settings.Default.FormTranslatorsPosition;
         }
 
@@ -55,16 +55,21 @@ namespace SynthControlEditor
 
         public void EditDescriptor(Descriptor descr)
         {
+            Save(); // Save old one first
             descriptor = descr;
             txtName.Text = descriptor.name;
-            txtLines.Text = descriptor.lines;
+            txtLines.Text = descriptor.GetLines();
         }
 
         private void frmDescriptor_FormClosing(object sender, FormClosingEventArgs e)
         {
             Save();
+            
             SynthControlEditor.Properties.Settings.Default.FormTranslatorsPosition = this.Location;
-            parentForm.descriptorForm = null;
+            
+            this.Hide();
+            e.Cancel = true;
+            //parentForm.descriptorForm = null;
         }
 
         private void txtLines_Leave(object sender, EventArgs e)
@@ -74,9 +79,10 @@ namespace SynthControlEditor
 
         public void Save()
         {
-            descriptor.name = txtName.Text;
-            descriptor.lines = txtLines.Text.Trim();
-            parentForm.UpdateDescriptors();
+            descriptor.name = txtName.Text.Trim();
+            descriptor.SetLines(txtLines.Lines);
+            BeginInvoke(new Action(() => parentForm.UpdateDescriptors()));
+            //parentForm.UpdateDescriptors();
         }
 
         private void frmDescriptor_Deactivate(object sender, EventArgs e)
