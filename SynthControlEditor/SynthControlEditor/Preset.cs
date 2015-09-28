@@ -101,7 +101,7 @@ namespace SynthControlEditor
                 reader.Close();
             }
             // Read names
-            sFileName = Path.Combine(sFolder, "descr_names.lst");
+            sFileName = Path.Combine(sFolder, "descr_names.txt");
             if (File.Exists(sFileName))
             {
                 TextReader textReader = File.OpenText(sFileName);
