@@ -99,14 +99,20 @@ namespace SynthControlEditor
             {
                 val = map(knob.Value, knob.Minimum, knob.Maximum, oPage.parameters[index].min, oPage.parameters[index].max);
                 valShow = val + oPage.parameters[index].displayOffset;
-                if (oPage.parameters[index].translator == (byte)Descriptor.Types.NONE)
+                if (oPage.parameters[index].descriptorType == (byte)Descriptor.Types.NONE)
                     desc = "";
-                else if (oPage.parameters[index].translator == (byte)Descriptor.Types.ASCII)
-                    desc = ": " + Descriptor.GetAsciiChar(val, oPage.parameters[index].translatorOffset);
-                else if (oPage.parameters[index].translator == (byte)Descriptor.Types.SEMITONES)
-                    desc = ": " + Descriptor.GetSemitone(val, oPage.parameters[index].translatorOffset);
-                else if (oPage.parameters[index].translator == (byte)Descriptor.Types.QUARTERTONES)
-                    desc = ": " + Descriptor.GetQuartertone(val, oPage.parameters[index].translatorOffset);
+                else if (oPage.parameters[index].descriptorType == (byte)Descriptor.Types.UNIT)
+                    desc = " " + oPage.parameters[index].unit;
+                else if (oPage.parameters[index].descriptorType == (byte)Descriptor.Types.ASCII)
+                    desc = ": " + Descriptor.GetAsciiChar(val, oPage.parameters[index].descriptorOffset);
+                else if (oPage.parameters[index].descriptorType == (byte)Descriptor.Types.SEMITONES)
+                    desc = ": " + Descriptor.GetSemitone(val, oPage.parameters[index].descriptorOffset);
+                else if (oPage.parameters[index].descriptorType == (byte)Descriptor.Types.QUARTERTONES)
+                    desc = ": " + Descriptor.GetQuartertone(val, oPage.parameters[index].descriptorOffset);
+                else if (oPage.parameters[index].descriptorType == (byte)Descriptor.Types.CUSTOM)
+                {
+                    desc = " " + oPreset.descriptors[oPage.parameters[index].descriptor].GetLine(val - oPage.parameters[index].descriptorOffset, oPage.parameters[index].descriptorShowExceeding);
+                }
                 
                 txtDisplayMain.Text = mainDisplay + oPage.parameters[index].nameLong + Environment.NewLine + valShow.ToString().PadLeft(5) + desc;
 

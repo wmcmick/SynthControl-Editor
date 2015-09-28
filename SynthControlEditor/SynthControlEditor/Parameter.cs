@@ -11,16 +11,17 @@ namespace SynthControlEditor
     public class Parameter : ICloneable
     {
         public enum Types {NONE, CC7, CC14, RPN7, RPN14, NRPN7, NRPN14, SYSEX, PB, AT};
-        public enum Translators {
+        /*public enum Translators {
             NONE, TRANSLATOR1, TRANSLATOR2, TRANSLATOR3,
             TRANSLATOR4, TRANSLATOR5, TRANSLATOR6, TRANSLATOR7, TRANSLATOR8,
             TRANSLATOR9, TRANSLATOR10, TRANSLATOR11, TRANSLATOR12, TRANSLATOR13,
             TRANSLATOR14, TRANSLATOR15, TRANSLATOR16, TRANSLATOR17, TRANSLATOR18,
             ASCII, NOTES
-        };
+        };*/
 
         public string nameShort;
         public string nameLong;
+        public string unit;
         public byte type;
         public byte layers;
         public ushort number_l1;
@@ -32,15 +33,20 @@ namespace SynthControlEditor
         public ushort max;
         public ushort stepSize;
         public short displayOffset;
-        public byte translator;
-        public byte translatorOffset;
-        public bool translatorUseLastItemForExceeding;
+        //public byte translator;
+        //public byte translatorOffset;
+        //public bool translatorUseLastItemForExceeding;
+        public byte descriptorType;
+        public byte descriptor;
+        public short descriptorOffset;
+        public bool descriptorShowExceeding;
         public Sysex sysex;
         
         public Parameter()
         {
             nameShort = "";
             nameLong = "";
+            unit = "";
             type = (byte)Types.NONE;
             layers = 1;
             number_l1 = 0;
@@ -52,9 +58,10 @@ namespace SynthControlEditor
             max = 127;
             stepSize = 1;
             displayOffset = 0;
-            translator = (byte)Translators.NONE;
-            translatorOffset = 0;
-            translatorUseLastItemForExceeding = false;
+            descriptorType = (byte)Descriptor.Types.NONE;
+            descriptor = 0;
+            descriptorOffset = 0;
+            descriptorShowExceeding = false;
             sysex = new Sysex();
         }
 

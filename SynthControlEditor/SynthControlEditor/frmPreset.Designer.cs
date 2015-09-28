@@ -63,6 +63,9 @@
             this.numLsbPos = new System.Windows.Forms.NumericUpDown();
             this.lblNumber1 = new System.Windows.Forms.Label();
             this.grpSysex = new System.Windows.Forms.GroupBox();
+            this.txtSysex4_4 = new System.Windows.Forms.TextBox();
+            this.txtSysex3_4 = new System.Windows.Forms.TextBox();
+            this.txtSysex2_4 = new System.Windows.Forms.TextBox();
             this.numChannelType = new System.Windows.Forms.NumericUpDown();
             this.lblChannelType = new System.Windows.Forms.Label();
             this.lblSysexLayer4 = new System.Windows.Forms.Label();
@@ -151,12 +154,12 @@
             this.txtHeader15 = new System.Windows.Forms.TextBox();
             this.txtHeader14 = new System.Windows.Forms.TextBox();
             this.cmbDescriptors = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDescriptor = new System.Windows.Forms.Label();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpDescriptors = new System.Windows.Forms.GroupBox();
-            this.chkUseHighestExceeding = new System.Windows.Forms.CheckBox();
+            this.chkShowExceeding = new System.Windows.Forms.CheckBox();
             this.numDescriptorOffset = new System.Windows.Forms.NumericUpDown();
             this.numMin = new System.Windows.Forms.NumericUpDown();
             this.numMax = new System.Windows.Forms.NumericUpDown();
@@ -174,9 +177,8 @@
             this.lblPresetName = new System.Windows.Forms.Label();
             this.grpHelp = new System.Windows.Forms.GroupBox();
             this.txtHelp = new System.Windows.Forms.TextBox();
-            this.txtSysex2_4 = new System.Windows.Forms.TextBox();
-            this.txtSysex3_4 = new System.Windows.Forms.TextBox();
-            this.txtSysex4_4 = new System.Windows.Forms.TextBox();
+            this.btnRemoveDescriptor = new System.Windows.Forms.Button();
+            this.txtUnit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numBytes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numParameterPos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMsbPos)).BeginInit();
@@ -745,6 +747,51 @@
             this.grpSysex.TabIndex = 87;
             this.grpSysex.TabStop = false;
             this.grpSysex.Text = "Sysex";
+            // 
+            // txtSysex4_4
+            // 
+            this.txtSysex4_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSysex4_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSysex4_4.Location = new System.Drawing.Point(571, 109);
+            this.txtSysex4_4.MaxLength = 2;
+            this.txtSysex4_4.Name = "txtSysex4_4";
+            this.txtSysex4_4.Size = new System.Drawing.Size(26, 20);
+            this.txtSysex4_4.TabIndex = 137;
+            this.txtSysex4_4.Text = "00";
+            this.txtSysex4_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSysex4_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex4_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex4_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            // 
+            // txtSysex3_4
+            // 
+            this.txtSysex3_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSysex3_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSysex3_4.Location = new System.Drawing.Point(571, 83);
+            this.txtSysex3_4.MaxLength = 2;
+            this.txtSysex3_4.Name = "txtSysex3_4";
+            this.txtSysex3_4.Size = new System.Drawing.Size(26, 20);
+            this.txtSysex3_4.TabIndex = 136;
+            this.txtSysex3_4.Text = "00";
+            this.txtSysex3_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSysex3_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex3_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex3_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            // 
+            // txtSysex2_4
+            // 
+            this.txtSysex2_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSysex2_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSysex2_4.Location = new System.Drawing.Point(571, 57);
+            this.txtSysex2_4.MaxLength = 2;
+            this.txtSysex2_4.Name = "txtSysex2_4";
+            this.txtSysex2_4.Size = new System.Drawing.Size(26, 20);
+            this.txtSysex2_4.TabIndex = 135;
+            this.txtSysex2_4.Text = "00";
+            this.txtSysex2_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSysex2_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
+            this.txtSysex2_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtSysex2_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // numChannelType
             // 
@@ -1984,14 +2031,14 @@
             this.cmbDescriptors.MouseEnter += new System.EventHandler(this.control_MouseEnter);
             this.cmbDescriptors.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
-            // label1
+            // lblDescriptor
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(293, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 131;
-            this.label1.Text = "Offset";
+            this.lblDescriptor.Location = new System.Drawing.Point(213, 29);
+            this.lblDescriptor.Name = "lblDescriptor";
+            this.lblDescriptor.Size = new System.Drawing.Size(35, 13);
+            this.lblDescriptor.TabIndex = 131;
+            this.lblDescriptor.Text = "Offset";
+            this.lblDescriptor.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // dlgOpen
             // 
@@ -2018,10 +2065,12 @@
             // 
             // grpDescriptors
             // 
-            this.grpDescriptors.Controls.Add(this.chkUseHighestExceeding);
+            this.grpDescriptors.Controls.Add(this.txtUnit);
+            this.grpDescriptors.Controls.Add(this.btnRemoveDescriptor);
+            this.grpDescriptors.Controls.Add(this.chkShowExceeding);
             this.grpDescriptors.Controls.Add(this.numDescriptorOffset);
             this.grpDescriptors.Controls.Add(this.cmbDescriptors);
-            this.grpDescriptors.Controls.Add(this.label1);
+            this.grpDescriptors.Controls.Add(this.lblDescriptor);
             this.grpDescriptors.Enabled = false;
             this.grpDescriptors.Location = new System.Drawing.Point(376, 202);
             this.grpDescriptors.Name = "grpDescriptors";
@@ -2030,25 +2079,36 @@
             this.grpDescriptors.TabStop = false;
             this.grpDescriptors.Text = "Descriptors";
             // 
-            // chkUseHighestExceeding
+            // chkShowExceeding
             // 
-            this.chkUseHighestExceeding.AutoSize = true;
-            this.chkUseHighestExceeding.Location = new System.Drawing.Point(407, 28);
-            this.chkUseHighestExceeding.Name = "chkUseHighestExceeding";
-            this.chkUseHighestExceeding.Size = new System.Drawing.Size(195, 17);
-            this.chkUseHighestExceeding.TabIndex = 140;
-            this.chkUseHighestExceeding.Text = "Show last item for exceeding values";
-            this.chkUseHighestExceeding.UseVisualStyleBackColor = true;
-            this.chkUseHighestExceeding.CheckedChanged += new System.EventHandler(this.txtParameter_TextChanged);
-            this.chkUseHighestExceeding.MouseEnter += new System.EventHandler(this.control_MouseEnter);
-            this.chkUseHighestExceeding.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            this.chkShowExceeding.AutoSize = true;
+            this.chkShowExceeding.Location = new System.Drawing.Point(328, 28);
+            this.chkShowExceeding.Name = "chkShowExceeding";
+            this.chkShowExceeding.Size = new System.Drawing.Size(139, 17);
+            this.chkShowExceeding.TabIndex = 140;
+            this.chkShowExceeding.Text = "Show exceeding values";
+            this.chkShowExceeding.UseVisualStyleBackColor = true;
+            this.chkShowExceeding.Visible = false;
+            this.chkShowExceeding.CheckedChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.chkShowExceeding.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.chkShowExceeding.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // numDescriptorOffset
             // 
             this.numDescriptorOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numDescriptorOffset.Location = new System.Drawing.Point(334, 27);
+            this.numDescriptorOffset.Location = new System.Drawing.Point(251, 27);
+            this.numDescriptorOffset.Maximum = new decimal(new int[] {
+            16383,
+            0,
+            0,
+            0});
+            this.numDescriptorOffset.Minimum = new decimal(new int[] {
+            16383,
+            0,
+            0,
+            -2147483648});
             this.numDescriptorOffset.Name = "numDescriptorOffset";
-            this.numDescriptorOffset.Size = new System.Drawing.Size(57, 20);
+            this.numDescriptorOffset.Size = new System.Drawing.Size(67, 20);
             this.numDescriptorOffset.TabIndex = 139;
             this.numDescriptorOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDescriptorOffset.ValueChanged += new System.EventHandler(this.txtParameter_TextChanged);
@@ -2309,50 +2369,28 @@
             this.txtHelp.Size = new System.Drawing.Size(427, 54);
             this.txtHelp.TabIndex = 0;
             // 
-            // txtSysex2_4
+            // btnRemoveDescriptor
             // 
-            this.txtSysex2_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSysex2_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex2_4.Location = new System.Drawing.Point(571, 57);
-            this.txtSysex2_4.MaxLength = 2;
-            this.txtSysex2_4.Name = "txtSysex2_4";
-            this.txtSysex2_4.Size = new System.Drawing.Size(26, 20);
-            this.txtSysex2_4.TabIndex = 135;
-            this.txtSysex2_4.Text = "00";
-            this.txtSysex2_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSysex2_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
-            this.txtSysex2_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
-            this.txtSysex2_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            this.btnRemoveDescriptor.Enabled = false;
+            this.btnRemoveDescriptor.Location = new System.Drawing.Point(533, 25);
+            this.btnRemoveDescriptor.Name = "btnRemoveDescriptor";
+            this.btnRemoveDescriptor.Size = new System.Drawing.Size(64, 23);
+            this.btnRemoveDescriptor.TabIndex = 141;
+            this.btnRemoveDescriptor.Text = "Remove";
+            this.btnRemoveDescriptor.UseVisualStyleBackColor = true;
+            this.btnRemoveDescriptor.Click += new System.EventHandler(this.btnRemoveDescriptor_Click);
             // 
-            // txtSysex3_4
+            // txtUnit
             // 
-            this.txtSysex3_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSysex3_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex3_4.Location = new System.Drawing.Point(571, 83);
-            this.txtSysex3_4.MaxLength = 2;
-            this.txtSysex3_4.Name = "txtSysex3_4";
-            this.txtSysex3_4.Size = new System.Drawing.Size(26, 20);
-            this.txtSysex3_4.TabIndex = 136;
-            this.txtSysex3_4.Text = "00";
-            this.txtSysex3_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSysex3_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
-            this.txtSysex3_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
-            this.txtSysex3_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
-            // 
-            // txtSysex4_4
-            // 
-            this.txtSysex4_4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSysex4_4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSysex4_4.Location = new System.Drawing.Point(571, 109);
-            this.txtSysex4_4.MaxLength = 2;
-            this.txtSysex4_4.Name = "txtSysex4_4";
-            this.txtSysex4_4.Size = new System.Drawing.Size(26, 20);
-            this.txtSysex4_4.TabIndex = 137;
-            this.txtSysex4_4.Text = "00";
-            this.txtSysex4_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSysex4_4.TextChanged += new System.EventHandler(this.txtSysex_TextChanged);
-            this.txtSysex4_4.MouseEnter += new System.EventHandler(this.control_MouseEnter);
-            this.txtSysex4_4.MouseLeave += new System.EventHandler(this.control_MouseLeave);
+            this.txtUnit.Location = new System.Drawing.Point(213, 27);
+            this.txtUnit.MaxLength = 13;
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.Size = new System.Drawing.Size(108, 20);
+            this.txtUnit.TabIndex = 142;
+            this.txtUnit.Visible = false;
+            this.txtUnit.TextChanged += new System.EventHandler(this.txtParameter_TextChanged);
+            this.txtUnit.MouseEnter += new System.EventHandler(this.control_MouseEnter);
+            this.txtUnit.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             // 
             // frmPreset
             // 
@@ -2514,7 +2552,7 @@
         private System.Windows.Forms.TextBox txtHeader15;
         private System.Windows.Forms.TextBox txtHeader14;
         private System.Windows.Forms.ComboBox cmbDescriptors;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDescriptor;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
         private System.Windows.Forms.SaveFileDialog dlgSave;
         private System.Windows.Forms.ListView lstPages;
@@ -2538,7 +2576,7 @@
         private System.Windows.Forms.NumericUpDown numNumber2;
         private System.Windows.Forms.NumericUpDown numNumber3;
         private System.Windows.Forms.NumericUpDown numNumber4;
-        private System.Windows.Forms.CheckBox chkUseHighestExceeding;
+        private System.Windows.Forms.CheckBox chkShowExceeding;
         private System.Windows.Forms.Button btnEditPage;
         private System.Windows.Forms.Button btnMovePageDown;
         private System.Windows.Forms.Button btnMovePageUp;
@@ -2562,6 +2600,8 @@
         private System.Windows.Forms.TextBox txtSysex4_4;
         private System.Windows.Forms.TextBox txtSysex3_4;
         private System.Windows.Forms.TextBox txtSysex2_4;
+        private System.Windows.Forms.Button btnRemoveDescriptor;
+        private System.Windows.Forms.TextBox txtUnit;
     }
 }
 

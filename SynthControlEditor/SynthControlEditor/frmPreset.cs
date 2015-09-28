@@ -15,7 +15,7 @@ namespace SynthControlEditor
 {
     public partial class frmPreset : Form
     {
-        public const int DESCRIPTOR_OFFSET = 4;
+        public const int DESCRIPTOR_OFFSET = 5;
 
         public const int TYPE_NONE = 0;
         public const int TYPE_CC7BIT = 1;
@@ -29,7 +29,7 @@ namespace SynthControlEditor
         public const int TYPE_AT = 9;
         
         private Preset preset;
-        string rootPath;
+        //string rootPath;
 
         private List<TextBox> lHeaders;
         
@@ -63,12 +63,13 @@ namespace SynthControlEditor
 
         //private Knob knob = null;
         
-        public frmPreset(Preset pPreset, string sRootPath) : base() 
+        public frmPreset(Preset pPreset) : base() 
         {
             presetChanged = false;
             
             preset = pPreset;
-            rootPath = sRootPath;
+            preset.LoadDescriptors();
+            //rootPath = sRootPath;
             
             // true when reading parameter values to gui, so text changed events will not do anything at that point
             readingParameter = true;
@@ -80,8 +81,10 @@ namespace SynthControlEditor
             this.Text += preset.name;
             lblPresetName.Text = preset.name;
 
+            //preset.Load();
+            //ListPages();
             LoadPages();
-            LoadTranslators();
+            
 
             UpdateDescriptors();
 
@@ -223,10 +226,11 @@ namespace SynthControlEditor
             int selected = cmbDescriptors.SelectedIndex;
 
             cmbDescriptors.Items.Add("None");
-            cmbDescriptors.Items.Add("ASCII");
-            cmbDescriptors.Items.Add("Notes");
-            cmbDescriptors.Items.Add("Notes (quarters)");
-            for (i = cmbDescriptors.Items.Count - 1; i > 3; i--) {
+            cmbDescriptors.Items.Add("Unit");
+            cmbDescriptors.Items.Add("Ascii");
+            cmbDescriptors.Items.Add("Semitones");
+            cmbDescriptors.Items.Add("Quartertones");
+            for (i = cmbDescriptors.Items.Count - 1; i >= DESCRIPTOR_OFFSET; i--) {
                 cmbDescriptors.Items.RemoveAt(i);
             }
             for (i = 0; i < preset.descriptors.Count; i++)
@@ -516,9 +520,19 @@ namespace SynthControlEditor
             lviPageEdited.page.parameters[parameterNumber].max = Convert.ToUInt16(numMax.Value);
             lviPageEdited.page.parameters[parameterNumber].displayOffset = Convert.ToInt16(numDisplayOffset.Value);
             lviPageEdited.page.parameters[parameterNumber].stepSize = Convert.ToUInt16(numStepSize.Value);
-            lviPageEdited.page.parameters[parameterNumber].translator = (byte)cmbDescriptors.SelectedIndex;
-            lviPageEdited.page.parameters[parameterNumber].translatorOffset = Convert.ToByte(numDescriptorOffset.Value);
-            lviPageEdited.page.parameters[parameterNumber].translatorUseLastItemForExceeding = chkUseHighestExceeding.Checked;
+            if (cmbDescriptors.SelectedIndex - DESCRIPTOR_OFFSET >= 0)
+            {
+                lviPageEdited.page.parameters[parameterNumber].descriptor = (byte)(cmbDescriptors.SelectedIndex - DESCRIPTOR_OFFSET);
+                lviPageEdited.page.parameters[parameterNumber].descriptorType = (byte)Descriptor.Types.CUSTOM;
+            }
+            else
+            {
+                lviPageEdited.page.parameters[parameterNumber].descriptor = 0;
+                lviPageEdited.page.parameters[parameterNumber].descriptorType = (byte)cmbDescriptors.SelectedIndex;
+            }
+            lviPageEdited.page.parameters[parameterNumber].descriptorOffset = Convert.ToInt16(numDescriptorOffset.Value);
+            lviPageEdited.page.parameters[parameterNumber].descriptorShowExceeding = chkShowExceeding.Checked;
+            lviPageEdited.page.parameters[parameterNumber].unit = txtUnit.Text;
             lviPageEdited.page.parameters[parameterNumber].layers = Convert.ToByte(numLayers.Value);
             lviPageEdited.page.parameters[parameterNumber].number_l1 = Convert.ToUInt16(numNumber1.Value);
             lviPageEdited.page.parameters[parameterNumber].number_l2 = Convert.ToUInt16(numNumber2.Value);
@@ -577,9 +591,16 @@ namespace SynthControlEditor
             numNumber3.Value = lviPageEdited.page.parameters[parameterNumber].number_l3;
             numNumber4.Value = lviPageEdited.page.parameters[parameterNumber].number_l4;
             chkLayersChannels.Checked = lviPageEdited.page.parameters[parameterNumber].separateChannels;
-            cmbDescriptors.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].translator;
-            numDescriptorOffset.Value = lviPageEdited.page.parameters[parameterNumber].translatorOffset;
-            chkUseHighestExceeding.Checked = lviPageEdited.page.parameters[parameterNumber].translatorUseLastItemForExceeding;
+
+            if (lviPageEdited.page.parameters[parameterNumber].descriptorType == (byte)Descriptor.Types.CUSTOM)
+                cmbDescriptors.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].descriptor + DESCRIPTOR_OFFSET;
+            else
+                cmbDescriptors.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].descriptorType;
+
+            numDescriptorOffset.Value = lviPageEdited.page.parameters[parameterNumber].descriptorOffset;
+            chkShowExceeding.Checked = lviPageEdited.page.parameters[parameterNumber].descriptorShowExceeding;
+            txtUnit.Text = lviPageEdited.page.parameters[parameterNumber].unit;
+            
             // Sysex
             numLength.Value = lviPageEdited.page.parameters[parameterNumber].sysex.length;
             cmbChecksum.SelectedIndex = lviPageEdited.page.parameters[parameterNumber].sysex.checksum;
@@ -881,13 +902,22 @@ namespace SynthControlEditor
             SynthControlEditor.Properties.Settings.Default.FormPresetPosition = this.Location;
         }
 
+        /*private void ListPages()
+        {
+            foreach (Page page in preset.pages)
+            {
+                ListViewItemPage lvi = new ListViewItemPage(page);
+                lstPages.Items.Add(lvi);
+            }
+        }*/
+
         private void LoadPages()
         {
-            string sFolder = Path.Combine(rootPath, preset.folderName);
+            string sFolder = Path.Combine(preset.rootPath, preset.folderName);
             
             if (File.Exists(Path.Combine(sFolder, "pages.lst")))
             {
-                BinaryReader reader = new BinaryReader(File.Open( Path.Combine(Path.Combine(rootPath, preset.folderName), "pages.lst"), FileMode.Open));
+                BinaryReader reader = new BinaryReader(File.Open(Path.Combine(Path.Combine(preset.rootPath, preset.folderName), "pages.lst"), FileMode.Open));
                 int i = 1;
                 while (reader.PeekChar() > 0)
                 {
@@ -912,8 +942,14 @@ namespace SynthControlEditor
             }
         }
 
-        public void LoadTranslators()
+        public void LoadDescriptors()
         {
+            /*string sFolder = Path.Combine(preset.rootPath, preset.folderName);
+            if (File.Exists(Path.Combine(sFolder, "descr.lst")))
+            {
+
+            }*/
+            
             /*string sFolder = Path.Combine(rootPath, preset.folderName);
 
             if (File.Exists(Path.Combine(sFolder, "trans.lst")))
@@ -942,7 +978,7 @@ namespace SynthControlEditor
             string sTmp = "";
             
             // Delete all pages
-            DirectoryInfo dir = new DirectoryInfo(Path.Combine(rootPath, preset.folderName));
+            DirectoryInfo dir = new DirectoryInfo(Path.Combine(preset.rootPath, preset.folderName));
             FileInfo[] files = dir.GetFiles("*.pag").Where(p => p.Extension == ".pag").ToArray();
             foreach (FileInfo file in files)
                 try
@@ -953,7 +989,7 @@ namespace SynthControlEditor
                 catch { }
             
             // Save pages.lst and pages
-            BinaryWriter writer = new BinaryWriter(File.Open( Path.Combine(Path.Combine(rootPath, preset.folderName), "pages.lst"), FileMode.Create));
+            BinaryWriter writer = new BinaryWriter(File.Open(Path.Combine(Path.Combine(preset.rootPath, preset.folderName), "pages.lst"), FileMode.Create));
             for(int i=0;i<lstPages.Items.Count;i++)
             {
                 ListViewItemPage lvi = (ListViewItemPage)lstPages.Items[i];
@@ -963,12 +999,13 @@ namespace SynthControlEditor
                     writer.Write(Encoding.ASCII.GetBytes("\n"));
 
                 string pageFile = (i+1).ToString();
-                lvi.page.Save(Path.Combine(Path.Combine(rootPath, preset.folderName), "p" + (i + 1).ToString() + ".pag"));
+                lvi.page.Save(Path.Combine(Path.Combine(preset.rootPath, preset.folderName), "p" + (i + 1).ToString() + ".pag"));
             }
             writer.Close();
 
-            // Save trans.lst
-            writer = new BinaryWriter(File.Open(Path.Combine(Path.Combine(rootPath, preset.folderName), "trans.lst"), FileMode.Create));
+            preset.SaveDescriptors();
+            // Save descr.lst
+            /*writer = new BinaryWriter(File.Open(Path.Combine(Path.Combine(preset.rootPath, preset.folderName), "descr.lst"), FileMode.Create));
             files = dir.GetFiles("*.trl").Where(p => p.Extension == ".trl").ToArray();
             for(int i=0;i<files.Length;i++)
             {
@@ -976,7 +1013,7 @@ namespace SynthControlEditor
                 byte translatorNumber = Convert.ToByte(files[i].Name.Remove(files[i].Name.IndexOf('.')).Substring(1));
                 writer.Write(translatorNumber);
             }
-            writer.Close();
+            writer.Close();*/
 
             // Reset presetChanged flag
             presetChanged = false;
@@ -1089,13 +1126,70 @@ namespace SynthControlEditor
                 }
 
                 if (descriptorForm == null)
-                    descriptorForm = new frmDescriptor(this, Path.Combine(rootPath, preset.folderName), descr);
+                    descriptorForm = new frmDescriptor(this, Path.Combine(preset.rootPath, preset.folderName), descr);
                 else
                     descriptorForm.EditDescriptor(descr);
                 descriptorForm.Show();
+
+                btnRemoveDescriptor.Enabled = true;
+            }
+            else
+            {
+                if (descriptorForm != null)
+                {
+                    descriptorForm.Clear();
+                    descriptorForm.Hide();
+                }
+                btnRemoveDescriptor.Enabled = false;
             }
 
+            if (cmbDescriptors.SelectedIndex == (byte)Descriptor.Types.UNIT)
+                txtUnit.Visible = true;
+            else
+                txtUnit.Visible = false;
+
+            bool bShow = false;
+            if (cmbDescriptors.SelectedIndex >= 2)
+                bShow = true;
+            numDescriptorOffset.Visible = bShow;
+            chkShowExceeding.Visible = bShow;
+            lblDescriptor.Visible = bShow;
+            
+
             parameterTextChanged();
+        }
+
+        private void btnRemoveDescriptor_Click(object sender, EventArgs e)
+        {
+            if(descriptorForm != null)
+                descriptorForm.Clear();
+
+            int index = cmbDescriptors.SelectedIndex;
+            cmbDescriptors.SelectedIndex = 0;
+
+            preset.descriptors.RemoveAt(index - DESCRIPTOR_OFFSET);
+
+            for (int i = 0; i < lstPages.Items.Count; i++)
+            {
+                ListViewItemPage lvi = (ListViewItemPage)lstPages.Items[i];
+                for (int j = 0; j < 16; j++)
+                {
+                    if (lvi.page.parameters[j].descriptorType == (byte)Descriptor.Types.CUSTOM && lvi.page.parameters[j].descriptor >= (index - DESCRIPTOR_OFFSET))
+                    {
+                        if (lvi.page.parameters[j].descriptor == (index - DESCRIPTOR_OFFSET))
+                        {
+                            lvi.page.parameters[j].descriptorType = (byte)Descriptor.Types.NONE;
+                            lvi.page.parameters[j].descriptor = 0;
+                        }
+                        else
+                            lvi.page.parameters[j].descriptor--;
+                    }
+
+                }
+            }
+
+            //cmbDescriptors.Items.RemoveAt(index);
+            UpdateDescriptors();
         }
 
     }

@@ -59,6 +59,7 @@ namespace SynthControlEditor
                     foreach (DirectoryInfo subDir in dirInfo.GetDirectories())
                     {
                         ListViewItemPreset item = new ListViewItemPreset(new string[] { subDir.Name, subDir.Name });
+                        item.preset.rootPath = txtFolder.Text;
                         item.preset.folderName = subDir.Name;
                         item.preset.name = subDir.Name;
                         lstPresets.Items.Add(item);
@@ -75,6 +76,7 @@ namespace SynthControlEditor
                     for (int i = 0; i < lines.Length - 1; i += 2) // There is one extra line break at the end
                     {
                         ListViewItemPreset item = new ListViewItemPreset(new string[] { lines[i+1].Trim(), lines[i].Trim() });
+                        item.preset.rootPath = txtFolder.Text;
                         item.preset.folderName = lines[i].Trim().Replace("\0",""); // Trim and remove null character that was saved for device
                         item.preset.name = lines[i + 1].Trim();
                         lstPresets.Items.Add(item);
@@ -111,7 +113,7 @@ namespace SynthControlEditor
             if (lstPresets.SelectedItems.Count > 0)
             {
                 ListViewItemPreset lvItem = (ListViewItemPreset)lstPresets.SelectedItems[0];
-                frmPreset frmEditPreset = new frmPreset(lvItem.preset, txtFolder.Text);
+                frmPreset frmEditPreset = new frmPreset(lvItem.preset);
                 if (frmEditPreset.ShowDialog() == DialogResult.OK)
                 {
                     MessageBox.Show("Should save!", "SynthControl Editor");

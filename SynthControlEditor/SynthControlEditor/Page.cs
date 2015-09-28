@@ -27,14 +27,14 @@ namespace SynthControlEditor
 
             byte version = reader.ReadByte(); // The version of the page file (unused at the moment, version 1)
 
-            ReadUntilNewLine(reader); // Read and discard new line character
+            Preset.ReadUntilNewLine(reader); // Read and discard new line character
 
             for (int i = 0; i < 4; i++)
             {
                 headers[i] = Encoding.ASCII.GetString(reader.ReadBytes(20)).TrimEnd();
             }
 
-            ReadUntilNewLine(reader); // Read and discard new line character
+            Preset.ReadUntilNewLine(reader); // Read and discard new line character
 
             for (int i = 0; i < parameters.Count; i++)
             {
@@ -51,11 +51,16 @@ namespace SynthControlEditor
                 parameters[i].number_l3 = Parameter.Create14bitValue(reader.ReadByte(), reader.ReadByte());
                 parameters[i].number_l4 = Parameter.Create14bitValue(reader.ReadByte(), reader.ReadByte());
                 parameters[i].separateChannels = Convert.ToBoolean(reader.ReadByte());
-                parameters[i].translator = reader.ReadByte();
-                parameters[i].translatorOffset = reader.ReadByte();
-                parameters[i].translatorUseLastItemForExceeding = Convert.ToBoolean(reader.ReadByte());
+                parameters[i].descriptorType = reader.ReadByte();
+                parameters[i].descriptor = reader.ReadByte();
+                parameters[i].descriptorOffset = BitConverter.ToInt16(reader.ReadBytes(2), 0);
+                parameters[i].descriptorShowExceeding = Convert.ToBoolean(reader.ReadByte());
 
-                ReadUntilNewLine(reader); // Read and discard new line character
+                Preset.ReadUntilNewLine(reader); // Read and discard new line character
+
+                parameters[i].unit = Encoding.ASCII.GetString(reader.ReadBytes(13)).TrimEnd();
+
+                Preset.ReadUntilNewLine(reader); // Read and discard new line character
    
                 // READ SYSEX FIELDS
                 parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(17)), 1);
@@ -63,7 +68,7 @@ namespace SynthControlEditor
                 parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(4)),  3);
                 parameters[i].sysex.SetMessage(Parameter.ByteArrayToHexString(reader.ReadBytes(4)),  4);
 
-                ReadUntilNewLine(reader); // Read and discard new line character
+                Preset.ReadUntilNewLine(reader); // Read and discard new line character
 
                 parameters[i].sysex.length = reader.ReadByte();
                 parameters[i].sysex.parameterPosition = reader.ReadByte();
@@ -74,19 +79,12 @@ namespace SynthControlEditor
                 parameters[i].sysex.channelType = reader.ReadByte();
                 parameters[i].sysex.checksum = reader.ReadByte();
 
-                ReadUntilNewLine(reader); // Read and discard new line character
+                Preset.ReadUntilNewLine(reader); // Read and discard new line character
             }
 
             reader.Close();
 
             return true;
-        }
-
-        public static void ReadUntilNewLine(BinaryReader r)
-        {
-            char c = ' ';
-            while (c != '\n')
-                c = r.ReadChar();
         }
 
         public bool Save(string fileName)
@@ -143,10 +141,17 @@ namespace SynthControlEditor
                 writer.Write(Parameter.MSB7bit(parameters[i].number_l4));
                 // Separate midi channels
                 writer.Write(parameters[i].separateChannels ? (byte)1 : (byte)0);
-                // Translator
-                writer.Write(parameters[i].translator);
-                writer.Write(parameters[i].translatorOffset);
-                writer.Write(parameters[i].translatorUseLastItemForExceeding ? (byte)1 : (byte)0);
+                // Descriptor
+                writer.Write(parameters[i].descriptorType);
+                writer.Write(parameters[i].descriptor);
+                bytes = BitConverter.GetBytes(parameters[i].descriptorOffset);
+                writer.Write(bytes);
+                writer.Write(parameters[i].descriptorShowExceeding ? (byte)1 : (byte)0);
+                // Write line break
+                writer.Write(Encoding.ASCII.GetBytes("\n"));
+                // Write unit
+                sTmp = parameters[i].unit.PadRight(13, ' ');
+                writer.Write(Encoding.ASCII.GetBytes(sTmp));
                 // Write line break
                 writer.Write(Encoding.ASCII.GetBytes("\n"));
                 // -- SYSEX ---------
